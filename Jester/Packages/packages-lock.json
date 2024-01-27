@@ -109,6 +109,7 @@
       "source": "registry",
       "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "com.unity.mathematics": "1.2.1",
         "com.unity.modules.jsonserialize": "1.0.0"
 =======
@@ -117,6 +118,8 @@
       "depth": 3,
       "source": "registry",
       "dependencies": {
+=======
+>>>>>>> 255edcf (deleted TextMeshPro in package manager)
         "com.unity.mathematics": "1.2.1"
 >>>>>>> 2065297 (base of VixaHero)
       },
@@ -196,18 +199,18 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.33",
+      "version": "1.3.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.ext.nunit": "2.0.3",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.7.6",
+      "version": "1.8.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
