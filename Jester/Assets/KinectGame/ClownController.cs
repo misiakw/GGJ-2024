@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Windows.Kinect;
+using static Assets.KinectGame.Enums;
 using Kinect = Windows.Kinect;
 
 public class ClownController : MonoBehaviour
@@ -46,6 +48,7 @@ public class ClownController : MonoBehaviour
     // Rotations of the bones when the Kinect tracking starts.
     protected Quaternion[] initialRotations;
     protected Quaternion[] initialLocalRotations;
+
     // dictionaries to speed up bones' processing
     // the author of the terrific idea for kinect-joints to mecanim-bones mapping
     // along with its initial implementation, including following dictionary is
@@ -80,6 +83,36 @@ public class ClownController : MonoBehaviour
         {JointType.FootRight, HumanBodyBones.RightToes},
     };
 
+    private readonly Dictionary<HumanBodyBones, Tuple<JointType, JointType>> humanBodyFromToJoint = new Dictionary<HumanBodyBones, Tuple<JointType, JointType>>
+    {
+        {HumanBodyBones.Head, new Tuple<JointType, JointType>(JointType.Neck, JointType.Head)},
+        {HumanBodyBones.Neck, new Tuple<JointType, JointType>(JointType.SpineShoulder, JointType.Neck)},
+        {HumanBodyBones.Chest, new Tuple<JointType, JointType>(JointType.SpineMid, JointType.SpineShoulder)},
+        {HumanBodyBones.Spine, new Tuple<JointType, JointType>(JointType.SpineBase, JointType.SpineMid)},
+
+        {HumanBodyBones.LeftShoulder, new Tuple<JointType, JointType>(JointType.SpineShoulder, JointType.ShoulderLeft)},
+        {HumanBodyBones.LeftUpperArm, new Tuple<JointType, JointType>(JointType.ShoulderLeft, JointType.ElbowLeft)},
+        {HumanBodyBones.LeftLowerArm, new Tuple<JointType, JointType>(JointType.ElbowLeft, JointType.WristLeft)},
+        {HumanBodyBones.LeftHand, new Tuple<JointType, JointType>(JointType.WristLeft, JointType.HandLeft)},
+
+        {HumanBodyBones.RightShoulder, new Tuple<JointType, JointType>(JointType.SpineShoulder, JointType.ShoulderRight)},
+        {HumanBodyBones.RightUpperArm, new Tuple<JointType, JointType>(JointType.ShoulderRight, JointType.ElbowRight)},
+        {HumanBodyBones.RightLowerArm, new Tuple<JointType, JointType>(JointType.ElbowRight, JointType.WristRight)},
+        {HumanBodyBones.RightHand, new Tuple<JointType, JointType>(JointType.WristRight, JointType.HandRight)},
+
+        {HumanBodyBones.Hips, new Tuple<JointType, JointType>(JointType.SpineBase, JointType.HipLeft)},
+        {HumanBodyBones.LeftUpperLeg, new Tuple<JointType, JointType>(JointType.HipLeft, JointType.KneeLeft)},
+        {HumanBodyBones.LeftLowerLeg, new Tuple<JointType, JointType>(JointType.KneeLeft, JointType.AnkleLeft)},
+        {HumanBodyBones.LeftFoot, new Tuple<JointType, JointType>(JointType.AnkleLeft, JointType.FootLeft)},
+
+        //{HumanBodyBones.Hips, new Tuple<JointType, JointType>(JointType.SpineBase, JointType.HipRight)},
+        {HumanBodyBones.RightUpperLeg, new Tuple<JointType, JointType>(JointType.HipRight, JointType.KneeRight)},
+        {HumanBodyBones.RightLowerLeg, new Tuple<JointType, JointType>(JointType.KneeRight, JointType.AnkleRight)},
+        {HumanBodyBones.RightFoot, new Tuple<JointType, JointType>(JointType.AnkleRight, JointType.FootRight)},
+    };
+
+
+    #region uselessDicts
     // dictionaries to speed up bones' processing
     // the author of the terrific idea for kinect-joints to mecanim-bones mapping
     // along with its initial implementation, including following dictionary is
@@ -181,7 +214,7 @@ public class ClownController : MonoBehaviour
         {4, new List<JointType> {JointType.ShoulderRight, JointType.SpineShoulder} },
         {9, new List<JointType> {JointType.ShoulderLeft, JointType.SpineShoulder} },
     };
-
+    #endregion
 
     // If the bones to be mapped have been declared, map that bone to the model.
     protected virtual void MapBones()
@@ -209,6 +242,28 @@ public class ClownController : MonoBehaviour
                 continue;
 
             bones[(int)jt] = animatorComponent.GetBoneTransform(jointToHumanBody[jt]);
+
+            if (jt == JointType.HandLeft || jt == JointType.HandRight || jt==JointType.FootLeft || jt== JointType.FootRight)
+            {
+                Limb newLimb = bones[(int)jt].gameObject.AddComponent<Limb>();
+                switch (jt)
+                {
+                    case JointType.HandLeft:
+                        newLimb.LimbType = LimbType.LeftHand; 
+                        break;
+                    case JointType.HandRight:
+                        newLimb.LimbType = LimbType.RightHand;
+                        break;
+                    case JointType.FootLeft:
+                        newLimb.LimbType = LimbType.LeftFoot; 
+                        break;
+                    case JointType.FootRight:
+                        newLimb.LimbType = LimbType.RightFoot;
+                        break;
+                }
+                BoxCollider bc = bones[(int)jt].gameObject.AddComponent<BoxCollider>();
+                //bc.size = new Vector3(bc.size.x, bc.size.y, 100);
+            }
         }
     }
     protected void MoveAvatar(uint UserID)
@@ -372,41 +427,6 @@ public class ClownController : MonoBehaviour
         }
 
         return;
-        if (!transform.gameObject.activeInHierarchy)
-            return;
-
-        // Get the KinectManager instance
-        //if (kinectManager == null)
-        //{
-        //    kinectManager = KinectManager.Instance;
-        //}
-
-        // move the avatar to its Kinect position
-        uint UserID = 0;
-        MoveAvatar(UserID);
-
-        for (var boneIndex = 0; boneIndex < bones.Length; boneIndex++)
-        {
-            if (!bones[boneIndex])
-                continue;
-
-            if (boneIndex2JointMap.ContainsKey(boneIndex))
-            {
-                JointType joint = !mirroredMovement ? boneIndex2JointMap[boneIndex] : boneIndex2MirrorJointMap[boneIndex];
-                //TransformBone(UserID, joint, boneIndex, !mirroredMovement);
-            }
-            else if (specIndex2JointMap.ContainsKey(boneIndex))
-            {
-                // special bones (clavicles)
-                List<JointType> alJoints = !mirroredMovement ? specIndex2JointMap[boneIndex] : specIndex2MirrorJointMap[boneIndex];
-
-                if (alJoints.Count >= 2)
-                {
-                    //Vector3 baseDir = alJoints[0].ToString().EndsWith("Left") ? Vector3.left : Vector3.right;
-                    //TransformSpecialBone(UserID, alJoints[0], alJoints[1], boneIndex, baseDir, !mirroredMovement);
-                }
-            }
-        }
     }
 
 
@@ -423,73 +443,11 @@ public class ClownController : MonoBehaviour
             }
             var boneToEdit = bones[(int)jt];
             boneToEdit.position = GetVector3FromJoint(sourceJoint, 3f);
-            //TransformBone(1, joint, boneIndex, !mirroredMovement);
-
-            //targetJoint = body.Joints[boneIndex2JointMap[jt]];
-
-            //Transform jointObj = bodyObject.transform.Find(jt.ToString());
-            //jointObj.localPosition = GetVector3FromJoint(sourceJoint, transformScale);
-
-            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            //if (targetJoint.HasValue)
-            //{
-            //    lr.SetPosition(0, jointObj.localPosition);
-            //    lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value, transformScale));
-            //    lr.SetColors(GetColorForState(sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
-            //}
-            //else
-            //{
-            //    lr.enabled = false;
-            //}
         }
     }
 
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float transformScale)
     {
         return new Vector3(joint.Position.X * transformScale, joint.Position.Y * transformScale, 0);
-    }
-
-    // Apply the rotations tracked by kinect to the joints.
-    protected void TransformBone(uint userId, JointType joint, int boneIndex, bool flip)
-    {
-        Transform boneTransform = bones[boneIndex];
-        if (boneTransform == null || kinectManager == null)
-            return;
-
-        int iJoint = (int)joint;
-        if (iJoint < 0)
-            return;
-
-        //Get Kinect joint orientation
-        Quaternion jointRotation = kinectManager.GetJointOrientation(userId, iJoint, flip);
-        if (jointRotation == Quaternion.identity)
-            return;
-
-        // Smoothly transition to the new rotation
-        Quaternion newRotation = Kinect2AvatarRot(jointRotation, boneIndex);
-
-        if (smoothFactor != 0f)
-            boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, smoothFactor * Time.deltaTime);
-        else
-            boneTransform.rotation = newRotation;
-    }
-
-    // Converts kinect joint rotation to avatar joint rotation, depending on joint initial rotation and offset rotation
-    protected Quaternion Kinect2AvatarRot(Quaternion jointRotation, int boneIndex)
-    {
-        // Apply the new rotation.
-        Quaternion newRotation = jointRotation * initialRotations[boneIndex];
-
-        //If an offset node is specified, combine the transform with its
-        //orientation to essentially make the skeleton relative to the node
-        if (offsetNode != null)
-        {
-            // Grab the total rotation by adding the Euler and offset's Euler.
-            Vector3 totalRotation = newRotation.eulerAngles + offsetNode.transform.rotation.eulerAngles;
-            // Grab our new rotation.
-            newRotation = Quaternion.Euler(totalRotation);
-        }
-
-        return newRotation;
     }
 }
