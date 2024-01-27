@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kiect-tower-background-asset_0: -4621867327231985636
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
