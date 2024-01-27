@@ -7,6 +7,7 @@ using UnityEngine.Windows;
 
 using DG.Tweening;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public class PlayerBehaviourScript : MonoBehaviour
 {
@@ -65,12 +66,20 @@ public class PlayerBehaviourScript : MonoBehaviour
         {
             moveFinished = false;
             var newNode = nav.Nodes[dir];
+            if(CurrentNode.GetComponent<SceneSelectScript>() != null)
+            {
+                CurrentNode.GetComponent<SceneSelectScript>().userInside = false;
+            }
 
             var tween = transform.DOMove(new Vector3(newNode.transform.position.x, newNode.transform.position.y, transform.position.z), 1);
             tween.onComplete = () =>
             {
                 CurrentNode = newNode;
                 moveFinished = true;
+
+                var sceneSelector = CurrentNode.GetComponent<SceneSelectScript>();
+                if (sceneSelector != null)
+                    sceneSelector.userInside = true;
             };
         }
     }

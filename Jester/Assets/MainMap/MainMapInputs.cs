@@ -202,61 +202,45 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""GameSelect"",
+            ""id"": ""e49eb579-8440-49c9-9784-bb052039f1c5"",
+            ""actions"": [
                 {
-                    ""name"": ""GamepadStrzalki"",
-                    ""id"": ""721e4597-1162-4a30-9691-20febc482c0d"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d8c3b75-374b-4d55-9f4d-ddbc4c3fb357"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c639197d-c128-46c5-8137-949d6cf99ca8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""5b9225da-583e-4a12-9ad4-04eadc3bf1f6"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""name"": """",
+                    ""id"": ""5fee47a2-af66-406f-95c1-c78c356ea365"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""4a33b7e7-bbba-4695-917a-1f708231e425"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ed11aeea-86f4-49f8-824b-bf0540ffecb6"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""1c468c0a-adce-4860-9e30-9641d3631053"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -266,6 +250,9 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        // GameSelect
+        m_GameSelect = asset.FindActionMap("GameSelect", throwIfNotFound: true);
+        m_GameSelect_Confirm = m_GameSelect.FindAction("Confirm", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -369,8 +356,58 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // GameSelect
+    private readonly InputActionMap m_GameSelect;
+    private List<IGameSelectActions> m_GameSelectActionsCallbackInterfaces = new List<IGameSelectActions>();
+    private readonly InputAction m_GameSelect_Confirm;
+    public struct GameSelectActions
+    {
+        private @MainMapInputs m_Wrapper;
+        public GameSelectActions(@MainMapInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Confirm => m_Wrapper.m_GameSelect_Confirm;
+        public InputActionMap Get() { return m_Wrapper.m_GameSelect; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameSelectActions set) { return set.Get(); }
+        public void AddCallbacks(IGameSelectActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GameSelectActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameSelectActionsCallbackInterfaces.Add(instance);
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
+        }
+
+        private void UnregisterCallbacks(IGameSelectActions instance)
+        {
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
+        }
+
+        public void RemoveCallbacks(IGameSelectActions instance)
+        {
+            if (m_Wrapper.m_GameSelectActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGameSelectActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GameSelectActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GameSelectActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public GameSelectActions @GameSelect => new GameSelectActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IGameSelectActions
+    {
+        void OnConfirm(InputAction.CallbackContext context);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +18,8 @@ public class NodeNavigationScript : MonoBehaviour
     public int MoveTime;
 
     public IDictionary<Dir, GameObject> Nodes = new Dictionary<Dir, GameObject>();
+
+    public bool IsTransitionNode => Nodes.Count == 2;
 
     void Start()
     {
@@ -57,8 +60,8 @@ public class NodeNavigationScript : MonoBehaviour
             dstNav.Nodes.Add(dstDir, gameObject);
 
             var line = new GameObject().AddComponent<LineRenderer>();
-            line.startColor = Color;
-            line.endColor = Color;
+            line.material = new Material(Shader.Find("Sprites/Default"));
+            line.SetColors(this.Color, this.Color);
             line.startWidth = LineWidth;
             line.endWidth = LineWidth;
             line.positionCount = 2;
