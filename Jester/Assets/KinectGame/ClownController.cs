@@ -261,8 +261,6 @@ public class ClownController : MonoBehaviour
                         newLimb.LimbType = LimbType.RightFoot;
                         break;
                 }
-                BoxCollider bc = bones[(int)jt].gameObject.AddComponent<BoxCollider>();
-                //bc.size = new Vector3(bc.size.x, bc.size.y, 100);
             }
         }
     }

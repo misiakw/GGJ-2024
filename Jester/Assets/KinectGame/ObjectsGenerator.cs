@@ -11,6 +11,8 @@ public class ObjectsGenerator : MonoBehaviour
     public GameObject TargetPrefab;
     private GameObject[] Targets = new GameObject[4];
     private bool redrawObjects = true;
+    public int score = 0;
+    public bool isRunning = false;
     private List<Vector3[]> TargetPositions = new List<Vector3[]>()
     {
         //                       LH,                RH,              LF,                RF
@@ -32,6 +34,11 @@ public class ObjectsGenerator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!isRunning)
+        {
+            return;
+        }
+
         if (redrawObjects)
         {
             redrawObjects = false;
@@ -89,7 +96,7 @@ public class ObjectsGenerator : MonoBehaviour
             if (!Targets[i].GetComponent<TargetController>().shouldDestroy)
                 return false;
         }
-        Debug.Log("BRAWO!");
+        score++;
         return true;
     }
 
