@@ -52,13 +52,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinishNode
       objectReference: {fileID: 0}
+    - target: {fileID: 4720331798427713661, guid: 5895be86798bdf9489bbfaffe67d00e5, type: 3}
+      propertyPath: m_TagString
+      value: MainMapNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469603939747805937, guid: 5895be86798bdf9489bbfaffe67d00e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1148788447, guid: 9d38a4be83e450f428806c2652b1750b, type: 3}
     - target: {fileID: 7469603939747805937, guid: 5895be86798bdf9489bbfaffe67d00e5, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7469603939747805937, guid: 5895be86798bdf9489bbfaffe67d00e5, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7469603939747805937, guid: 5895be86798bdf9489bbfaffe67d00e5, type: 3}
       propertyPath: m_Color.r
@@ -89,3 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfc3a7e4d6b5154b8b5dc96bc6bfaea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneName: 
+  userInside: 0

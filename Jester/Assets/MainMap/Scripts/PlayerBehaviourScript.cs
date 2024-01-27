@@ -21,6 +21,18 @@ public class PlayerBehaviourScript : MonoBehaviour
     void Start()
     {
         DOTween.Init(this);
+
+        if (!string.IsNullOrEmpty(CrossSceneStorage.MainMapPlayerLocation))
+        {
+            var finishNode = GameObject.FindGameObjectsWithTag("MainMapFinishNode")
+                .FirstOrDefault(n => n.GetComponent<SceneSelectScript>().SceneName == CrossSceneStorage.MainMapPlayerLocation);
+            if(finishNode != null)
+            {
+                CurrentNode = finishNode;
+            }
+
+        }
+
         if (CurrentNode != null)
             this.transform.position = new Vector3(CurrentNode.transform.position.x, CurrentNode.transform.position.y, -2);
     }
@@ -79,7 +91,14 @@ public class PlayerBehaviourScript : MonoBehaviour
 
                 var sceneSelector = CurrentNode.GetComponent<SceneSelectScript>();
                 if (sceneSelector != null)
+                {
                     sceneSelector.userInside = true;
+                    CrossSceneStorage.MainMapPlayerLocation = sceneSelector.SceneName;
+                }
+                else
+                {
+                    CrossSceneStorage.MainMapPlayerLocation = string.Empty;
+                }
             };
         }
     }
