@@ -5,13 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/MainMap/MainMap.unity
     guid: 936be4667a95c97448574c279463a3db
   - enabled: 1
     path: Assets/NineStepsGame/NineSteps.unity
     guid: ce5dbe0f43d70f046a505a5e701a4f41
+  - enabled: 1
+    path: Assets/KinectGame/KinectGame.unity
+    guid: b3245cf2bce091247bf2608eef39a74e
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
