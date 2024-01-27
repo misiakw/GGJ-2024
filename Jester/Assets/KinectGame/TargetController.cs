@@ -10,16 +10,29 @@ public class TargetController : MonoBehaviour
     public LimbType TargetLimbType;
     public float timeToScore = 5f;
     public GameObject ProgressBar;
+    public bool shouldRandomize = false;
     
     private Guid triggerGuid;
     private float timeFromTrigger = 0f;
+    private bool startProgressBar = false;
 
+    public bool IsTriggered()
+    {
+        return triggerGuid != Guid.Empty;
+    }
 
+    public void StartProgressBar()
+    {
+        StartCoroutine(Collect(triggerGuid));
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = new Vector3(UnityEngine.Random.Range(-2f, 3), UnityEngine.Random.Range(-2f, 3), 0);
+        if (shouldRandomize)
+        {
+            this.transform.position = new Vector3(UnityEngine.Random.Range(-2f, 3), UnityEngine.Random.Range(-2f, 3), 0);
+        }
         this.transform.localScale = Vector3.one * 0.5f;
         Color color = LimbTypeToColor(TargetLimbType);
         if (this.GetComponent<MeshRenderer>() != null)
@@ -71,15 +84,16 @@ public class TargetController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triggerGuid != Guid.Empty)
+        if (startProgressBar)
         {
             timeFromTrigger += Time.deltaTime;
+            ProgressBar.GetComponent<Image>().fillAmount = timeFromTrigger / timeToScore;
         }
-        ProgressBar.GetComponent<Image>().fillAmount = timeFromTrigger / timeToScore;
     }
 
     IEnumerator Collect(Guid guid)
     {
+        startProgressBar = true;
         triggerGuid = guid;
         yield return new WaitForSeconds(timeToScore);
         if (triggerGuid == guid)
@@ -94,7 +108,8 @@ public class TargetController : MonoBehaviour
         Limb limb = other.gameObject.GetComponent<Limb>();
         if (limb != null && limb.LimbType == TargetLimbType)
         {
-            StartCoroutine(Collect(Guid.NewGuid()));
+            triggerGuid = Guid.NewGuid();
+            StartProgressBar();
         }
     }
 
@@ -105,6 +120,8 @@ public class TargetController : MonoBehaviour
         {
             triggerGuid = Guid.Empty;
             timeFromTrigger = 0f;
+            ProgressBar.GetComponent<Image>().fillAmount = 0;
+            startProgressBar = false;
         }
     }
 }

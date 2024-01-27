@@ -28,7 +28,9 @@ public class ObjectsGenerator : MonoBehaviour
                 LimbType lt = (LimbType)(i + 1);
                 Targets[i] = Instantiate(TargetPrefab);
                 Targets[i].name = "Target" + lt;
-                Targets[i].GetComponent<TargetController>().TargetLimbType = lt;
+                TargetController tc = Targets[i].GetComponent<TargetController>();
+                tc.TargetLimbType = lt;
+                tc.shouldRandomize = true;
             }
         }
         
