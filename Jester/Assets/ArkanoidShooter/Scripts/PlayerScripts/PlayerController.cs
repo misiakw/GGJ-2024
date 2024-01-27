@@ -33,11 +33,11 @@ public class PlayerController : MonoBehaviour
         {
 
          if (bullet_Delay_timer > current_Max_Attack_Timer)
-          {
+             {
                 canAttack = true;
                 remainingBullets = max_Bullets;
                 bullet_Delay_timer = 0f;
-          }
+             }
         }
         else if (attack_Timer > current_Attack_Timer)
         {
