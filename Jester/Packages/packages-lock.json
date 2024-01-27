@@ -108,8 +108,17 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
+<<<<<<< HEAD
         "com.unity.mathematics": "1.2.1",
         "com.unity.modules.jsonserialize": "1.0.0"
+=======
+    "com.unity.burst": {
+      "version": "1.8.11",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1"
+>>>>>>> 2065297 (base of VixaHero)
       },
       "url": "https://packages.unity.com"
     },

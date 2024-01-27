@@ -7,11 +7,12 @@ TagManager:
   - MainMapNode
   - MainMapFinishNode
   - ScoreLabel
+  - PointerTag
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - pointer
   - Water
   - UI
   - 
