@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SceneSelectScript : MonoBehaviour
 {
     public string SceneName;
+    public Scene Scene;
     private MainMapInputs input;
 
     public bool userInside = false;
@@ -29,8 +31,7 @@ public class SceneSelectScript : MonoBehaviour
     {
         if (userInside)
         {
-            //ToDo: Load scene here
-            Debug.Log("pressed");
+            SceneManager.LoadScene(SceneName);
         }
     }
 }

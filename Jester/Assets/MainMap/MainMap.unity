@@ -819,7 +819,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: m_Name
-      value: TopLeft
+      value: NineSteps
       objectReference: {fileID: 0}
     - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: m_TagString
@@ -827,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483287860502252450, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: SceneName
-      value: TestFinishNode
+      value: NineSteps
       objectReference: {fileID: 0}
     - target: {fileID: 9052279982793750478, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: m_LocalPosition.x
