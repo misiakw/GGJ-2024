@@ -8,13 +8,14 @@ using static Assets.KinectGame.Enums;
 public class TargetController : MonoBehaviour
 {
     public LimbType TargetLimbType;
-    public float timeToScore = 5f;
+    public float timeToScore = 1f;
     public GameObject ProgressBar;
     public bool shouldRandomize = false;
     
     private Guid triggerGuid;
     private float timeFromTrigger = 0f;
     private bool startProgressBar = false;
+    public bool shouldDestroy = false;
 
     public bool IsTriggered()
     {
@@ -24,6 +25,14 @@ public class TargetController : MonoBehaviour
     public void StartProgressBar()
     {
         StartCoroutine(Collect(triggerGuid));
+    }
+
+    public void StopProgressBar()
+    {
+        timeFromTrigger = 0f;
+        ProgressBar.GetComponent<Image>().fillAmount = 0;
+        startProgressBar = false;
+        shouldDestroy = false;
     }
 
     // Start is called before the first frame update
@@ -98,8 +107,7 @@ public class TargetController : MonoBehaviour
         yield return new WaitForSeconds(timeToScore);
         if (triggerGuid == guid)
         {
-            Debug.Log("Zlapane!");
-            Destroy(this.gameObject);
+            shouldDestroy = true;
         }
     }
 
@@ -119,9 +127,7 @@ public class TargetController : MonoBehaviour
         if (limb != null && limb.LimbType == TargetLimbType)
         {
             triggerGuid = Guid.Empty;
-            timeFromTrigger = 0f;
-            ProgressBar.GetComponent<Image>().fillAmount = 0;
-            startProgressBar = false;
+            StopProgressBar();
         }
     }
 }
