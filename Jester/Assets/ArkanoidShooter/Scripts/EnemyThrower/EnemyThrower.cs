@@ -22,6 +22,8 @@ public class EnemyController : MonoBehaviour
     public float spawnXPosition = 11f;
 
     public GameObject score;
+
+    public GameObject Orchestrator;
     public int scoreInt;
     void Start()
     {
@@ -33,20 +35,23 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // Move towards target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
-        current_Attack_Timer += Time.deltaTime;
-        // Throw bullets at player
-          if (attack_Timer < current_Attack_Timer)
+        if (Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning)
         {
-            canFire = true;
-
-            if (canFire && player != null)
+            // Move towards target position
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
+            current_Attack_Timer += Time.deltaTime;
+            // Throw bullets at player
+            if (attack_Timer < current_Attack_Timer)
             {
-                 Vector3 direction = (player.transform.position - transform.position).normalized;
-                FireBullet(direction);
-                canFire = false;
-                current_Attack_Timer = 0f;
+                canFire = true;
+
+                if (canFire && player != null)
+                {
+                    Vector3 direction = (player.transform.position - transform.position).normalized;
+                    FireBullet(direction);
+                    canFire = false;
+                    current_Attack_Timer = 0f;
+                }
             }
         }
     }
@@ -69,15 +74,17 @@ public class EnemyController : MonoBehaviour
             Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             Vector3 spawnPosition2 = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             scoreInt += 10;
-            Instantiate(this.gameObject, spawnPosition, Quaternion.identity);
-            Instantiate(this.gameObject, spawnPosition2, Quaternion.identity);
+            var newEnemy = Instantiate(this.gameObject, spawnPosition, Quaternion.identity);
+            newEnemy.GetComponent<EnemyController>().Orchestrator = Orchestrator;
+            newEnemy = Instantiate(this.gameObject, spawnPosition2, Quaternion.identity);
+            newEnemy.GetComponent<EnemyController>().Orchestrator = Orchestrator;
 
             var targetPosition = new Vector3(8f, transform.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
             Destroy(this.gameObject);
         }
     }
-        void FireBullet(Vector3 direction)
+    void FireBullet(Vector3 direction)
     {
         // Create enemy bullet
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);

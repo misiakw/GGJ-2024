@@ -10,21 +10,24 @@ public class CountdownScript : MonoBehaviour
     private float TimeLimit = 60.0f;
 
     private float ElapsedTime = 0f;
-    private bool isRunning = false;
+    public GameObject Orchestrator;
 
     private void FixedUpdate()
     {
-        ElapsedTime += Time.deltaTime;
-        if(ElapsedTime >= TimeLimit )
+        if (Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning)
         {
-            StopGame();
+            ElapsedTime += Time.deltaTime;
+            if (ElapsedTime >= TimeLimit)
+            {
+                StopGame();
+            }
+            this.GetComponent<TextMeshProUGUI>().text = $"Time left: {TimeLimit - ElapsedTime:00.0}";
         }
-        this.GetComponent<TextMeshProUGUI>().text = $"Time left: {TimeLimit - ElapsedTime:00.0}";
     }
 
     private void StopGame()
     {
-        isRunning = false;
+        Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning = false;
     }
     void Start()
     {
@@ -34,6 +37,5 @@ public class CountdownScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

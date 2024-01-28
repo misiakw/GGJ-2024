@@ -22,6 +22,8 @@ public class EnemyScript : MonoBehaviour
     public GameObject enemyPrefab;
 
     public GameObject score;
+
+    public GameObject Orchestrator;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -30,8 +32,11 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        Vector3 targetPosition = new Vector2(player.position.x, player.position.y);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        if (Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning)
+        {
+            Vector3 targetPosition = new Vector2(player.position.x, player.position.y);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,7 +57,9 @@ public class EnemyScript : MonoBehaviour
         if (animator != null)
         {
             Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            var newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            newEnemy.GetComponent<EnemyScript>().Orchestrator = Orchestrator;
+            
         }
 
         Destroy(gameObject);

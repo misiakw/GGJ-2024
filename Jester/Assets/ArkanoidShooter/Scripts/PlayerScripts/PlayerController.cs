@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject[] healths;
 
+    public GameObject Orchestrator;
+
     public float spawnXPosition = 11f;
     void Attack_1()
     {
@@ -100,9 +102,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
-        Attack_1();
-        Endgame();
+        if (Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning)
+        {
+            MovePlayer();
+            Attack_1();
+            Endgame();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -133,9 +139,11 @@ public class PlayerController : MonoBehaviour
 
     private void Endgame()
     {
-        if(max_Health <= 0)
+        if (!Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning || max_Health <= 0)
         {
-
+            Orchestrator.GetComponent<ArcanoidOrchestrator>().IsRunning = false;
+            if(max_Health <=0)
+                Orchestrator.GetComponent<ArcanoidOrchestrator>().isSuccess = false;
         }
     }
 
