@@ -381,7 +381,7 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
             ""id"": ""77c365e1-c6cd-44aa-a4cb-4d71f0fe9fb5"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Json"",
                     ""type"": ""Button"",
                     ""id"": ""cba41733-f09b-41b0-ab59-787c2a0adad2"",
                     ""expectedControlType"": ""Button"",
@@ -398,7 +398,7 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Json"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -409,7 +409,7 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Json"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -426,7 +426,7 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         m_GameSelect_Confirm = m_GameSelect.FindAction("Confirm", throwIfNotFound: true);
         // EasterEgg
         m_EasterEgg = asset.FindActionMap("EasterEgg", throwIfNotFound: true);
-        m_EasterEgg_Newaction = m_EasterEgg.FindAction("New action", throwIfNotFound: true);
+        m_EasterEgg_Json = m_EasterEgg.FindAction("Json", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -580,12 +580,12 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
     // EasterEgg
     private readonly InputActionMap m_EasterEgg;
     private List<IEasterEggActions> m_EasterEggActionsCallbackInterfaces = new List<IEasterEggActions>();
-    private readonly InputAction m_EasterEgg_Newaction;
+    private readonly InputAction m_EasterEgg_Json;
     public struct EasterEggActions
     {
         private @MainMapInputs m_Wrapper;
         public EasterEggActions(@MainMapInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_EasterEgg_Newaction;
+        public InputAction @Json => m_Wrapper.m_EasterEgg_Json;
         public InputActionMap Get() { return m_Wrapper.m_EasterEgg; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -595,16 +595,16 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_EasterEggActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_EasterEggActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Json.started += instance.OnJson;
+            @Json.performed += instance.OnJson;
+            @Json.canceled += instance.OnJson;
         }
 
         private void UnregisterCallbacks(IEasterEggActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Json.started -= instance.OnJson;
+            @Json.performed -= instance.OnJson;
+            @Json.canceled -= instance.OnJson;
         }
 
         public void RemoveCallbacks(IEasterEggActions instance)
@@ -632,6 +632,6 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
     }
     public interface IEasterEggActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnJson(InputAction.CallbackContext context);
     }
 }

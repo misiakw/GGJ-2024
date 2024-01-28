@@ -31,6 +31,7 @@ public class SceneSelectScript : MonoBehaviour
     {
         if (userInside)
         {
+            CrossSceneStorage.MainMapPlayerLocation = SceneName;
             SceneManager.LoadScene(SceneName);
         }
     }

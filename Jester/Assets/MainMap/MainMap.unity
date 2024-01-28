@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -558,6 +559,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d34c88d29327c47b94f3305311d6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &554876676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9052279982793750478, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
@@ -660,6 +673,10 @@ PrefabInstance:
     - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: m_Name
       value: Kinekt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
+      propertyPath: m_TagString
+      value: MainMapFinishNode
       objectReference: {fileID: 0}
     - target: {fileID: 2483287860502252450, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: SceneName
@@ -988,6 +1005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arkanoid
       objectReference: {fileID: 0}
+    - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
+      propertyPath: m_TagString
+      value: MainMapFinishNode
+      objectReference: {fileID: 0}
     - target: {fileID: 2483287860502252450, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: SceneName
       value: ArkanoidShooter
@@ -1142,6 +1163,10 @@ PrefabInstance:
     - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: m_Name
       value: VixaHero
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330633586343977533, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
+      propertyPath: m_TagString
+      value: MainMapFinishNode
       objectReference: {fileID: 0}
     - target: {fileID: 2483287860502252450, guid: 4f59d4a67647ba3469a8d7661302ef68, type: 3}
       propertyPath: SceneName

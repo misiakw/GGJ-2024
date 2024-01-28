@@ -70,6 +70,11 @@ public class PlayerBehaviourScript : MonoBehaviour
             Move(NodeNavigationScript.Dir.South);
     }
 
+    private void Json(InputAction.CallbackContext context)
+    {
+        Debug.Log("Json");
+    }
+
     private void Move(NodeNavigationScript.Dir dir)
     {
         var nav = CurrentNode.GetComponent<NodeNavigationScript>();
@@ -83,9 +88,11 @@ public class PlayerBehaviourScript : MonoBehaviour
                 CurrentNode.GetComponent<SceneSelectScript>().userInside = false;
             }
 
+            input.EasterEgg.Json.performed += Json;
             var tween = transform.DOMove(new Vector3(newNode.transform.position.x, newNode.transform.position.y, transform.position.z), 1);
             tween.onComplete = () =>
             {
+                input.EasterEgg.Json.performed -= Json;
                 CurrentNode = newNode;
                 moveFinished = true;
 
