@@ -5,10 +5,6 @@ public class LogicManagerScript : MonoBehaviour
 {
     public Text textUI;
     public GameObject gameOver;
-    //public GameObject jester;
-    //public GameObject priest;
-    //public GameObject spellSpawner;
-    //public GameObject[] pointers;
     public Text clock;
     private float timer = 45;
     public GameObject vixaHero;
@@ -31,7 +27,7 @@ public class LogicManagerScript : MonoBehaviour
         //priest.SetActive(false);
         //spellSpawner.GetComponent<SpellSpawnerScript>().Stop();
         //DeactivatePointers();
-        //DeactivateSpells();
+        DeactivateSpells();
         vixaHero.SetActive(false);
 
         gameOver.SetActive(true);
@@ -56,13 +52,13 @@ public class LogicManagerScript : MonoBehaviour
     //    }
     //}
 
-    //private void DeactivateSpells()
-    //{
-    //    var spells = GameObject.FindGameObjectsWithTag("SpellTag");
+    private void DeactivateSpells()
+    {
+        var spells = GameObject.FindGameObjectsWithTag("SpellTag");
 
-    //    foreach (GameObject spell in spells)
-    //    {
-    //        spell.SetActive(false);
-    //    }
-    //}
+        foreach (GameObject spell in spells)
+        {
+            spell.SetActive(false);
+        }
+    }
 }
