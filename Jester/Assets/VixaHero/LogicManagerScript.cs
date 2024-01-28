@@ -9,10 +9,12 @@ public class LogicManagerScript : MonoBehaviour
     public Text clock;
     private float timer = 45;
     public GameObject vixaHero;
+    private bool _gameFailedFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = 45;
     }
 
     // Update is called once per frame
@@ -21,18 +23,17 @@ public class LogicManagerScript : MonoBehaviour
         timer -= Time.deltaTime;
         clock.text = timer.ToString();
 
-        if (timer <= 0)
+        if (!_gameFailedFlag)
         {
-            GameFinished();
+            if (timer <= 0)
+            {
+                GameFinished();
+            }
         }
     }
 
     public void GameFailed()
-    {
-        //jester.SetActive(false);
-        //priest.SetActive(false);
-        //spellSpawner.GetComponent<SpellSpawnerScript>().Stop();
-        //DeactivatePointers();
+    {;
         DeactivateSpells();
         vixaHero.SetActive(false);
 
@@ -45,27 +46,19 @@ public class LogicManagerScript : MonoBehaviour
         vixaHero.SetActive(false);
 
         gameOver.SetActive(true);
+        CrossSceneStorage.IsVixaComplete = true;
     }
 
     public void UpdateScore(int score)
     {
-        //Debug.Log($"LogicManagerScript counter: {score}");
         textUI.text = score.ToString();
 
         if (score <=  0)
         {
-
+            _gameFailedFlag = true;
             GameFailed();
         }
     }
-
-    //private void DeactivatePointers()
-    //{
-    //    foreach (GameObject p in pointers)
-    //    {
-    //        p.SetActive(false);
-    //    }
-    //}
 
     private void DeactivateSpells()
     {

@@ -7,7 +7,7 @@ public class SpellMoveScript : MonoBehaviour
     public float moveSpeed = 5;
     public float deadZone = -16;
     public GameObject[] sprites;
-    private static int _failsCounter = 3;
+    public static int _failsCounter = 3;
     private LogicManagerScript _logicManager;
 
     // Start is called before the first frame update
@@ -34,15 +34,15 @@ public class SpellMoveScript : MonoBehaviour
         }       
     }
 
-    //void Destroyer()
-    //{
+        //void Destroyer()
+        //{
 
-    //    DestroyImmediate(gameObject);
-    //}
+        //    DestroyImmediate(gameObject);
+        //}
 
-    //public void SpellDefeated()
-    //{
-    //    StartCoroutine("Destroyer");
-    //    //_destroyerOn = true;
-    //}
-}
+        //public void SpellDefeated()
+        //{
+        //    StartCoroutine("Destroyer");
+        //    //_destroyerOn = true;
+        //}
+    }
