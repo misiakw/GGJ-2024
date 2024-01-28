@@ -64,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -267,14 +267,21 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Castle-map-cursed-top-asset_0: 3879858722455773597
+      Castle-map-cursed-top-asset_1: 6123988513924413624
+      Castle-map-cursed-top-asset_2: -4062844054647178590
+      Castle-map-cursed-top-asset_3: -295927592729149140
+      Castle-map-cursed-top-asset_4: -8760723841020174640
+      Castle-map-cursed-top-asset_5: 5715390906555308397
+      Castle-map-cursed-top-asset_6: -6447090572478985066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
