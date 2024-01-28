@@ -137,3 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WhoAmI: 0
+  pointers: []
+  rollTime: 2
+  _spellObject: {fileID: 7921780861835784781, guid: f4a4dc51f0a9fc74081e562a8c0997d1, type: 3}

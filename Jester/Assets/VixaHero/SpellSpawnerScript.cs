@@ -7,6 +7,7 @@ public class SpellSpawnerScript : MonoBehaviour
     public double spawnRate = 5;
     private List<int> _numbers = new List<int>() { -4, 5, -1, 5, 1, 5, 4, 5 };
     private float _timer = 0;
+    private static bool _running = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +18,17 @@ public class SpellSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_timer < spawnRate)
+        if (_running)
         {
-            _timer += Time.deltaTime;
-        }
-        else
-        {
-            SpawnSpell();
-            _timer = 0;
+            if (_timer < spawnRate)
+            {
+                _timer += Time.deltaTime;
+            }
+            else
+            {
+                SpawnSpell();
+                _timer = 0;
+            }
         }
     }
 
@@ -34,6 +38,11 @@ public class SpellSpawnerScript : MonoBehaviour
         int randomIndexOf8 = Random.Range(0, 7);
 
         var spell = Instantiate(Spell, new Vector3(transform.position.x, _numbers[randomIndexOf4], 0), transform.rotation);
-        spell.GetComponent<SpellMoveScript>().sprites[randomIndexOf8].active = true;
+        spell.GetComponent<SpellMoveScript>().sprites[randomIndexOf8].SetActive(true);
+    }
+
+    public void Stop()
+    {
+        _running = false;
     }
 }
