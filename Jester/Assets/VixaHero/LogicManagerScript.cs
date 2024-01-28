@@ -5,12 +5,13 @@ public class LogicManagerScript : MonoBehaviour
 {
     public Text textUI;
     public GameObject gameOver;
-    public GameObject jester;
-    public GameObject priest;
-    public GameObject spellSpawner;
-    public GameObject[] pointers;
+    //public GameObject jester;
+    //public GameObject priest;
+    //public GameObject spellSpawner;
+    //public GameObject[] pointers;
     public Text clock;
     private float timer = 45;
+    public GameObject vixaHero;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +27,12 @@ public class LogicManagerScript : MonoBehaviour
 
     public void GameOver()
     {
-        jester.SetActive(false);
-        priest.SetActive(false);
-        spellSpawner.GetComponent<SpellSpawnerScript>().Stop();
-        DeactivatePointers();
-        DeactivateSpells();
+        //jester.SetActive(false);
+        //priest.SetActive(false);
+        //spellSpawner.GetComponent<SpellSpawnerScript>().Stop();
+        //DeactivatePointers();
+        //DeactivateSpells();
+        vixaHero.SetActive(false);
 
         gameOver.SetActive(true);
     }
@@ -46,21 +48,21 @@ public class LogicManagerScript : MonoBehaviour
         }
     }
 
-    private void DeactivatePointers()
-    {
-        foreach (GameObject p in pointers)
-        {
-            p.SetActive(false);
-        }
-    }
+    //private void DeactivatePointers()
+    //{
+    //    foreach (GameObject p in pointers)
+    //    {
+    //        p.SetActive(false);
+    //    }
+    //}
 
-    private void DeactivateSpells()
-    {
-        var spells = GameObject.FindGameObjectsWithTag("SpellTag");
+    //private void DeactivateSpells()
+    //{
+    //    var spells = GameObject.FindGameObjectsWithTag("SpellTag");
 
-        foreach (GameObject spell in spells)
-        {
-            spell.SetActive(false);
-        }
-    }
+    //    foreach (GameObject spell in spells)
+    //    {
+    //        spell.SetActive(false);
+    //    }
+    //}
 }
