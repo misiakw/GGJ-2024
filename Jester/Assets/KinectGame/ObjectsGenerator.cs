@@ -13,6 +13,8 @@ public class ObjectsGenerator : MonoBehaviour
     private bool redrawObjects = true;
     public int score = 0;
     public bool isRunning = false;
+    private int previousPreset = 0;
+
     private List<Vector3[]> TargetPositions = new List<Vector3[]>()
     {
         //                       LH,                        RH,                             LF,                             RF
@@ -55,6 +57,10 @@ public class ObjectsGenerator : MonoBehaviour
         if (usePresets)
         {
             int selectedPreset = UnityEngine.Random.Range(0, TargetPositions.Count);
+            while (selectedPreset == previousPreset)
+            {
+                selectedPreset = UnityEngine.Random.Range(0, TargetPositions.Count);
+            }
             for (int i = 0; i != Targets.Length; i++)
             {
                 if (Targets[i] == null || Targets[i].GetComponent<TargetController>().shouldDestroy)
