@@ -86,7 +86,7 @@ public class GameOrchestrator : MonoBehaviour
     private void ShowEndScreen()
     {
         EndScreen.SetActive(true);
-        var happySprite = EndScreen.transform.FindChild("PersonHappy").GetComponent<SpriteRenderer>();
+        var happySprite = EndScreen.transform.Find("PersonHappy").GetComponent<SpriteRenderer>();
         happySprite.color = new Color(happySprite.color.r, happySprite.color.g, happySprite.color.b, score / targetScore);
         if(score >= targetScore/2)
         {
