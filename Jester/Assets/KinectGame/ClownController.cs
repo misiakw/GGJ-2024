@@ -264,6 +264,7 @@ public class ClownController : MonoBehaviour
             }
         }
     }
+
     protected void MoveAvatar(uint UserID)
     {
         //if (bodyRoot == null || kinectManager == null)
@@ -420,6 +421,7 @@ public class ClownController : MonoBehaviour
 
             if (body.IsTracked)
             {
+                //MoveAvatar(1);
                 MoveAvatar(body);
             }
         }
@@ -440,12 +442,13 @@ public class ClownController : MonoBehaviour
                 continue;
             }
             var boneToEdit = bones[(int)jt];
-            boneToEdit.position = GetVector3FromJoint(sourceJoint, 3f);
+            boneToEdit.position = (GetVector3FromJoint(sourceJoint) - GetVector3FromJoint(body.Joints[JointType.SpineBase])) * 3f;
+            
         }
     }
 
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float transformScale)
+    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * transformScale, joint.Position.Y * transformScale, 0);
+        return new Vector3(joint.Position.X, joint.Position.Y, 0);
     }
 }
