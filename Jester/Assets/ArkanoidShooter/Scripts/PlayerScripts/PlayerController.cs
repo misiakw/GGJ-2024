@@ -16,21 +16,27 @@ public class PlayerController : MonoBehaviour
     private GameObject player_Bullet;
     [SerializeField]
     private Transform attack_Point;
-
+    private float current_Attack_Timer;
     public float attack_Timer = 0.05f;
     public float attack_Delay = 0.2f;
-    public int max_Bullets = 5;
+    public int max_Bullets = 6;
     public float bullet_Delay_timer = 0f;
 
-    private float current_Attack_Timer;
-    private float current_Max_Attack_Timer = 8f;
+    private float current_Max_Attack_Timer = 6f;
     private bool canAttack =true;
     private int max_Health = 3;
     private int remainingBullets;
     public GameObject bulletsText;
     public GameObject healthText;
+    public float yMin = -5f;
+    public float yMax = 5f;
 
-    public HealthManager healthManager;
+    public GameObject enemyPrefab;
+
+    [SerializeField]
+    private GameObject[] eggs;
+
+    public float spawnXPosition = 11f;
     void Attack_1()
     {
         attack_Timer += Time.deltaTime;
@@ -41,6 +47,10 @@ public class PlayerController : MonoBehaviour
                  {
                     canAttack = true;
                     remainingBullets = max_Bullets;
+                for (int i = 0; i < max_Bullets; i++)
+                {
+                    eggs[i].gameObject.SetActive(true);
+                }
                     bullet_Delay_timer = 0f;
                  }
         }
@@ -55,36 +65,34 @@ public class PlayerController : MonoBehaviour
                 //canAttack = false;
                 attack_Timer = 0f;
                 remainingBullets--;
+                eggs[remainingBullets].gameObject.SetActive(false);
                 Instantiate(player_Bullet, attack_Point.position, Quaternion.identity);
             }
         }
-        UpdateBulletsText();
     }
-    void UpdateBulletsText()
-    {
-        bulletsText.GetComponent<TextMeshProUGUI>().text = "Bullets: " + remainingBullets + " / " + max_Bullets;
-    }
+        
 
     void UpdateHealthText()
     {
+
         healthText.GetComponent<TextMeshProUGUI>().text = "Health: " + max_Health;
     }
-    //void Attack()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Space) && canAttack)
-    //    {
-    //        StartCoroutine(ShootWithDelay());
-    //    }
 
-    //}
     void Start()
     {
         current_Attack_Timer = attack_Timer;
         remainingBullets = max_Bullets;
 
-        UpdateBulletsText();
+        bulletsText.GetComponent<TextMeshProUGUI>().text = "Bullets: ";
+
+        for (int i = 0; i < max_Bullets; i++)
+        {
+            eggs[i].gameObject.SetActive(true);
+        }
+
         UpdateHealthText();
     }
+
 
     void Update()
     {
@@ -99,6 +107,15 @@ public class PlayerController : MonoBehaviour
          {
             max_Health--;
             UpdateHealthText();
+            Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
+            Instantiate(collision.gameObject, spawnPosition, Quaternion.identity);
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            max_Health--;
+            UpdateHealthText();
+            Destroy(collision.gameObject);
         }
     }
 

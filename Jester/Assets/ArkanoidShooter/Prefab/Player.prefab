@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8654312411960026059}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -234,10 +234,20 @@ MonoBehaviour:
   max_Y: 2
   player_Bullet: {fileID: 7141862203929415207, guid: eb8f2d1ab1101c043a0a83c080fc5108, type: 3}
   attack_Point: {fileID: 5740185265332518651}
-  attack_Timer: 0.05
-  attack_Delay: 0.05
+  attack_Timer: 1
+  attack_Delay: 0.8
   max_Bullets: 6
   bullet_Delay_timer: 0
   bulletsText: {fileID: 0}
   healthText: {fileID: 0}
-  healthManager: {fileID: 0}
+  yMin: -5
+  yMax: 5
+  enemyPrefab: {fileID: 0}
+  eggs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnXPosition: 11
