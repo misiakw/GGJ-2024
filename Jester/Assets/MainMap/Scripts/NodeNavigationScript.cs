@@ -27,24 +27,16 @@ public class NodeNavigationScript : MonoBehaviour
         InitializeConnection(NodeSouth, Dir.South);
         InitializeConnection(NodeEast, Dir.East);
         InitializeConnection(NodeWest, Dir.West);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
     }   
 
     private void InitializeConnection(GameObject dst, Dir directory)
     {
         if (dst == null)
             return;
-        Nodes.Add(directory, dst);
+        if (!Nodes.ContainsKey(directory))
+        {
+            Nodes.Add(directory, dst);
+        }
 
         var dstNav = dst.GetComponent<NodeNavigationScript>();
         var dstDir = directory switch
@@ -52,7 +44,7 @@ public class NodeNavigationScript : MonoBehaviour
             Dir.North => Dir.South,
             Dir.East => Dir.West,
             Dir.South => Dir.North,
-            Dir.West => Dir.East,
+            _ => Dir.East
         };
 
         if (!dstNav.Nodes.ContainsKey(dstDir))
@@ -61,7 +53,8 @@ public class NodeNavigationScript : MonoBehaviour
 
             var line = new GameObject().AddComponent<LineRenderer>();
             line.material = new Material(Shader.Find("Sprites/Default"));
-            line.SetColors(this.Color, this.Color);
+            line.startColor = Color;
+            line.endColor = Color;
             line.startWidth = LineWidth;
             line.endWidth = LineWidth;
             line.positionCount = 2;

@@ -8,20 +8,20 @@ using UnityEngine.Windows;
 using DG.Tweening;
 using UnityEngine.UIElements;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PlayerBehaviourScript : MonoBehaviour
 {
     public GameObject CurrentNode;
+    public float Speed = 0.5f;
 
     private MainMapInputs input;
     private bool moveFinished = true;
-    public float Speed = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         DOTween.Init(this);
-
         if (!string.IsNullOrEmpty(CrossSceneStorage.MainMapPlayerLocation))
         {
             var finishNode = GameObject.FindGameObjectsWithTag("MainMapFinishNode")

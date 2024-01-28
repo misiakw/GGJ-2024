@@ -257,6 +257,61 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""StepMat"",
+                    ""id"": ""c986a489-b516-4338-8fca-c147bef47191"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a3e39dba-e63f-4aae-b2bb-222fc3589f9a"",
+                    ""path"": ""<HID::USB Gamepad >/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""740d3873-6d6b-4ac6-86d6-051305f28a8e"",
+                    ""path"": ""<HID::USB Gamepad >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""39096fb0-5ce4-40e4-b2b5-e5cb101a0813"",
+                    ""path"": ""<HID::USB Gamepad >/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c024ce90-8bab-430b-a57e-a9ccf2634556"",
+                    ""path"": ""<HID::USB Gamepad >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -290,6 +345,28 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""5fee47a2-af66-406f-95c1-c78c356ea365"",
                     ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a0e28f1-e595-46eb-879e-b556cd31445e"",
+                    ""path"": ""<HID::USB Gamepad >/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbb8066f-f2ee-4a7a-9595-dba53c6711e2"",
+                    ""path"": ""<HID::USB Gamepad >/button9"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
