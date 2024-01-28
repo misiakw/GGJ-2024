@@ -9,7 +9,8 @@ public class ArcanoidOrchestrator : MonoBehaviour
     public GameObject EndScreen;
     public bool isSuccess = true;
 
-    private const string EndGameKindSucceed = @"The King:
+    private const string EndGameKindSucceed = @"SUCCESS
+The King:
 ""Huzzah! You've saved me from the stampede of cursed chaos, dear Jester!\nYour clever tricks and quick thinking have restored order to my kingdom. I shall not forget this day of laughter and rescue!""
 
 
@@ -33,6 +34,7 @@ Jester:
         {
             EndScreen.GetComponentInChildren<Text>().text = isSuccess ? EndGameKindSucceed : EndGameKingFailed;
             EndScreen.SetActive(true);
+            CrossSceneStorage.IsArkanoidComplete = isSuccess;
         }
 
     }
