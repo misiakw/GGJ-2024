@@ -41,7 +41,7 @@ public class NodeNavigationScript : MonoBehaviour
             Dir.North => Dir.South,
             Dir.East => Dir.West,
             Dir.South => Dir.North,
-            Dir.West => Dir.East,
+            _ => Dir.East
         };
 
         if (!dstNav.Nodes.ContainsKey(dstDir))

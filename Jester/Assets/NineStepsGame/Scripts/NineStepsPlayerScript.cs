@@ -18,7 +18,7 @@ public class NineStepsPlayerScript : MonoBehaviour
     public float MoveSpeed = 0.25f;
     public float minWaitTime = 0.5f;
     public float maxWaitTime = 1.5f;
-    public float GameTimer = 10f;
+    public float GameTimer = 45f;
     public Text TextLabel;
 
     private GameObject[,] Steps = new GameObject[3, 3];
@@ -71,7 +71,7 @@ public class NineStepsPlayerScript : MonoBehaviour
         if(spawnDelay <= 0)
         {
             SpawnPoint();
-            spawnDelay = Random.RandomRange(minWaitTime, maxWaitTime);
+            spawnDelay = Random.Range(minWaitTime, maxWaitTime);
         }
         else
             spawnDelay -= Time.deltaTime;
@@ -81,6 +81,7 @@ public class NineStepsPlayerScript : MonoBehaviour
             GameTimer = float.MaxValue;
             GameView.SetActive(false);
             EndScreen.SetActive(true);
+            input.Disable();
         }
         else
             GameTimer -= Time.deltaTime;
@@ -116,16 +117,16 @@ public class NineStepsPlayerScript : MonoBehaviour
             return;
 
         foreach (var sprite in MovementSprites)
-            sprite.active = false;
+            sprite.SetActive(false);
 
         if (dY > 0)
-            MovementSprites[0].active = true;
+            MovementSprites[0].SetActive(true);
         if (dY < 0)
-            MovementSprites[1].active = true;
+            MovementSprites[1].SetActive(true);
         if (dX > 0)
-            MovementSprites[2].active = true;
+            MovementSprites[2].SetActive(true);
         if (dX < 0)
-            MovementSprites[3].active = true;
+            MovementSprites[3].SetActive(true);
 
 
         var tween = transform.DOMove(new Vector3(newPos.x, newPos.y, transform.position.z), MoveSpeed);
