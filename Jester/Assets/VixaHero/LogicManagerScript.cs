@@ -7,21 +7,21 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject gameOver;
     public GameObject gameFailed;
     public Text clock;
-    private float timer = 45;
+    private float timer = 20;
     public GameObject vixaHero;
     private bool _gameFailedFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = 45;
+        timer = 20;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        clock.text = timer.ToString();
+        clock.text = $"{(int)timer}";
 
         if (!_gameFailedFlag)
         {
@@ -59,7 +59,6 @@ public class LogicManagerScript : MonoBehaviour
             GameFailed();
         }
     }
-
     private void DeactivateSpells()
     {
         var spells = GameObject.FindGameObjectsWithTag("SpellTag");

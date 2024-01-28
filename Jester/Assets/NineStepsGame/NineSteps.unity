@@ -977,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 393261468}
     - target: {fileID: 8686582081454335965, guid: f00fec7d8eb700a47a957d1b8f23b51a, type: 3}
       propertyPath: GameTimer
-      value: 45
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8686582081454335965, guid: f00fec7d8eb700a47a957d1b8f23b51a, type: 3}
       propertyPath: TextLabel
