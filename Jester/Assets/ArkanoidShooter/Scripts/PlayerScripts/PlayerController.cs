@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private GameObject player_Bullet;
     [SerializeField]
     private Transform attack_Point;
+
     private float current_Attack_Timer;
     public float attack_Timer = 0.05f;
     public float attack_Delay = 0.2f;
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private int max_Health = 3;
     private int remainingBullets;
     public GameObject bulletsText;
-    public GameObject healthText;
     public float yMin = -5f;
     public float yMax = 5f;
 
@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject[] eggs;
+
+    [SerializeField]
+    private GameObject[] healths;
 
     public float spawnXPosition = 11f;
     void Attack_1()
@@ -74,8 +77,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateHealthText()
     {
-
-        healthText.GetComponent<TextMeshProUGUI>().text = "Health: " + max_Health;
     }
 
     void Start()
@@ -89,7 +90,10 @@ public class PlayerController : MonoBehaviour
         {
             eggs[i].gameObject.SetActive(true);
         }
-
+        for(int i = 0; i<=2; i++ )
+        {
+            healths[i].gameObject.SetActive(true);
+        }
         UpdateHealthText();
     }
 
@@ -106,6 +110,10 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("Enemy"))
          {
             max_Health--;
+            if (max_Health >= 0)
+            {
+                healths[max_Health].gameObject.SetActive(false);
+            }
             UpdateHealthText();
             Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             Instantiate(collision.gameObject, spawnPosition, Quaternion.identity);
@@ -114,6 +122,10 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("EnemyBullet"))
         {
             max_Health--;
+            if (max_Health >= 0)
+            {
+                healths[max_Health].gameObject.SetActive(false);
+            }
             UpdateHealthText();
             Destroy(collision.gameObject);
         }

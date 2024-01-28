@@ -1,6 +1,9 @@
 using System.Collections;
 
+using TMPro;
+
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyController : MonoBehaviour
 {
@@ -18,6 +21,8 @@ public class EnemyController : MonoBehaviour
     public float yMax = 3f;
     public float spawnXPosition = 11f;
 
+    public GameObject score;
+    public int scoreInt;
     void Start()
     {
         // Set the initial target position
@@ -28,6 +33,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        UpdateScore();
         // Move towards target position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
         current_Attack_Timer += Time.deltaTime;
@@ -45,7 +51,13 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-    
+    private void UpdateScore()
+    {
+        if (score != null)
+        {
+            score.GetComponent<TextMeshProUGUI>().text = $"Score : {scoreInt}";
+        }
+    }
     void SearchForPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -56,7 +68,7 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             Vector3 spawnPosition2 = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
-
+            scoreInt += 10;
             Instantiate(this.gameObject, spawnPosition, Quaternion.identity);
             Instantiate(this.gameObject, spawnPosition2, Quaternion.identity);
 

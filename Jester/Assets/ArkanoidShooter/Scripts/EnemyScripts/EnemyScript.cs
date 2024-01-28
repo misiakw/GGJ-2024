@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     private Animator animator;
     public GameObject enemyPrefab;
 
+    public GameObject score;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -31,23 +32,30 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 targetPosition = new Vector2(player.position.x, player.position.y);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        UpdateScore();
     }
-    //private void FixedUpdate()
-    //{
-    //    score.GetComponent<TextMeshProUGUI>().text = $"Score: {scoreInt}";
-    //}
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+        scoreInt++;
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
-            scoreInt++;
+            
             PlayDestructionAnimation();
         }
         if(CompareTag("Player"))
         {
             scoreInt++;
             Destroy(gameObject);
+        }
+    }
+
+    private void UpdateScore()
+    {
+        if(score != null)
+        {
+            score.GetComponent<TextMeshProUGUI>().text = $"Score : {scoreInt}";
         }
     }
 
