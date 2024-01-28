@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CountdownScript : MonoBehaviour
 {
-    private float TimeLimit = 60.0f;
+    private float TimeLimit = 20.0f;
 
     private float ElapsedTime = 0f;
     public GameObject Orchestrator;

@@ -5,7 +5,6 @@ public class SpellSpawnerScript : MonoBehaviour
 {
     public GameObject Spell;
     public double spawnRate = 5;
-    private List<int> _numbers = new List<int>() { -4, 5, -1, 5, 1, 5, 4, 5 };
     private float _timer = 0;
     private static bool _running = true;
 
@@ -37,7 +36,11 @@ public class SpellSpawnerScript : MonoBehaviour
         int randomIndexOf4 = Random.Range(0, 4);
         int randomIndexOf8 = Random.Range(0, 7);
 
-        var spell = Instantiate(Spell, new Vector3(transform.position.x, _numbers[randomIndexOf4], 0), transform.rotation);
+        
+
+        //var spell = Instantiate(Spell, new Vector3(transform.position.x, _numbers[randomIndexOf4], 0), transform.rotation);
+        var spell = Instantiate(Spell, new Vector3(transform.position.x, GameObject.Find($"Pointer{randomIndexOf4 + 1}").transform.position.y, 0), transform.rotation);
+        spell.GetComponent<SpellMoveScript>().Fret = randomIndexOf4 + 1;
         spell.GetComponent<SpellMoveScript>().sprites[randomIndexOf8].SetActive(true);
     }
 

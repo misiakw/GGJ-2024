@@ -9,6 +9,7 @@ public class SpellMoveScript : MonoBehaviour
     public GameObject[] sprites;
     public static int _failsCounter = 3;
     private LogicManagerScript _logicManager;
+    public int Fret;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class SpellMoveScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
-
+        transform.position = new Vector3(transform.position.x, GameObject.Find($"Pointer{Fret}").transform.position.y, transform.position.z);
         if (transform.position.x < deadZone)
         {
             if (gameObject.layer != 6)
