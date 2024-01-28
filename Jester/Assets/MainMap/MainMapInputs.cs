@@ -375,6 +375,45 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""EasterEgg"",
+            ""id"": ""77c365e1-c6cd-44aa-a4cb-4d71f0fe9fb5"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""cba41733-f09b-41b0-ab59-787c2a0adad2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""09e5c47f-66a9-4e31-90ef-749e99bdcfdf"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a5a7f3f-9b8a-4824-9fbb-90f002a6a32c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -385,6 +424,9 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         // GameSelect
         m_GameSelect = asset.FindActionMap("GameSelect", throwIfNotFound: true);
         m_GameSelect_Confirm = m_GameSelect.FindAction("Confirm", throwIfNotFound: true);
+        // EasterEgg
+        m_EasterEgg = asset.FindActionMap("EasterEgg", throwIfNotFound: true);
+        m_EasterEgg_Newaction = m_EasterEgg.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -534,6 +576,52 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
         }
     }
     public GameSelectActions @GameSelect => new GameSelectActions(this);
+
+    // EasterEgg
+    private readonly InputActionMap m_EasterEgg;
+    private List<IEasterEggActions> m_EasterEggActionsCallbackInterfaces = new List<IEasterEggActions>();
+    private readonly InputAction m_EasterEgg_Newaction;
+    public struct EasterEggActions
+    {
+        private @MainMapInputs m_Wrapper;
+        public EasterEggActions(@MainMapInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_EasterEgg_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_EasterEgg; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EasterEggActions set) { return set.Get(); }
+        public void AddCallbacks(IEasterEggActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EasterEggActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EasterEggActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(IEasterEggActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(IEasterEggActions instance)
+        {
+            if (m_Wrapper.m_EasterEggActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEasterEggActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EasterEggActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EasterEggActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EasterEggActions @EasterEgg => new EasterEggActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -541,5 +629,9 @@ public partial class @MainMapInputs: IInputActionCollection2, IDisposable
     public interface IGameSelectActions
     {
         void OnConfirm(InputAction.CallbackContext context);
+    }
+    public interface IEasterEggActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -353,6 +353,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "EasterEgg",
+            "id": "77c365e1-c6cd-44aa-a4cb-4d71f0fe9fb5",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "cba41733-f09b-41b0-ab59-787c2a0adad2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "09e5c47f-66a9-4e31-90ef-749e99bdcfdf",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a5a7f3f-9b8a-4824-9fbb-90f002a6a32c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
