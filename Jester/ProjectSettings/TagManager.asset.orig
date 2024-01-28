@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - MainMapNode
   - MainMapFinishNode
-  - ScoreLabel
+=======
   - PointerTag
-  - SpellTag
-  - LogicManagerScriptTag
-  - GameOverrTag
+>>>>>>> 62896aa (base of VixaHero)
   layers:
   - Default
   - TransparentFX
@@ -18,7 +17,7 @@ TagManager:
   - pointer
   - Water
   - UI
-  - checked
+  - 
   - 
   - 
   - 
