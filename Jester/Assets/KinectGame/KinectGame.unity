@@ -270,7 +270,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 6
   m_Sprite: {fileID: 8542742100202616840, guid: 58e7c0410a50ac7439c0cfe46c914f38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -1010,6 +1010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 136163071388840876, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 477474851993619509, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_Size.x
       value: 1.43
@@ -1024,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: -7052742912570934937, guid: 58e7c0410a50ac7439c0cfe46c914f38, type: 3}
     - target: {fileID: 477474851993619509, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 477474851993619509, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -1036,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 731271527281294310, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 926564011986534347, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_Name
@@ -1089,6 +1093,10 @@ PrefabInstance:
     - target: {fileID: 2598121828364445863, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085453334337805140, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5007540246376135372, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1828,6 +1836,10 @@ PrefabInstance:
     - target: {fileID: 2042904279040993094, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_Name
       value: Jester2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042904279040993094, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
