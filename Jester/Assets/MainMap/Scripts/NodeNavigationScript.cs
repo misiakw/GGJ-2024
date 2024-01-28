@@ -27,17 +27,6 @@ public class NodeNavigationScript : MonoBehaviour
         InitializeConnection(NodeSouth, Dir.South);
         InitializeConnection(NodeEast, Dir.East);
         InitializeConnection(NodeWest, Dir.West);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
     }   
 
     private void InitializeConnection(GameObject dst, Dir directory)

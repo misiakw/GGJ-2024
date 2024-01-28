@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainMapNode
   - MainMapFinishNode
+  - ScoreLabel
   layers:
   - Default
   - TransparentFX
