@@ -154,7 +154,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      king-asset-sad-happy_0: -306877264550536130
+      king-asset-sad-happy_1: -8888577435259886417
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
