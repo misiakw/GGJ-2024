@@ -1532,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588648406341532940, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 2598121828364445863, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1592,14 +1592,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6177947193429893592, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1753864975067530402, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1788185672736152142, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 668264455}
-    - targetCorrespondingSourceObject: {fileID: 1788185672736152142, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2092162854}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 926564011986534347, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       insertIndex: -1
@@ -2130,7 +2128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588648406341532940, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 2598121828364445863, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2185,7 +2183,8 @@ PrefabInstance:
       value: 264.42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1753864975067530402, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1788185672736152142, guid: f2d1079658834564b8c6ff557e1f52d6, type: 3}
       insertIndex: -1
@@ -2317,86 +2316,6 @@ MonoBehaviour:
   gameFailed: {fileID: 1244801229}
   clock: {fileID: 1833312388}
   vixaHero: {fileID: 212538622}
---- !u!1 &2092162853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2092162854}
-  - component: {fileID: 2092162856}
-  - component: {fileID: 2092162855}
-  m_Layer: 5
-  m_Name: JesterFailed
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2092162854
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092162853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 756594065}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -232, y: -100}
-  m_SizeDelta: {x: 545.8553, y: 42.0958}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2092162855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092162853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Your prayers are heard indeed. I can feel the kingdom falling asleep already
-    :P
---- !u!222 &2092162856
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092162853}
-  m_CullTransparentMesh: 1
 --- !u!1 &2094929170
 GameObject:
   m_ObjectHideFlags: 0
