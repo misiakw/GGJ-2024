@@ -15,15 +15,17 @@ public class ObjectsGenerator : MonoBehaviour
     public bool isRunning = false;
     private List<Vector3[]> TargetPositions = new List<Vector3[]>()
     {
-        //                       LH,                RH,              LF,                RF
-        //new Vector3[4] { new Vector3(1.3f,2), new Vector3(-1.3f,2), new Vector3(-1.3f,-3), new Vector3(1.3f,-3), }, //cross hands
-        new Vector3[4] { new Vector3(-1.3f, 2), new Vector3(1.3f,2), new Vector3(-1.3f,-3), new Vector3(1.3f,-3)  }, //spread
-        new Vector3[4] { new Vector3(-2f,0), new Vector3(2f, 0), new Vector3(0f,-3), new Vector3(1.3f,-2)  }, //RF up
-        new Vector3[4] { new Vector3(-2f,2), new Vector3(2f, 2), new Vector3(-0.5f,-3), new Vector3(0.5f,-3)  }, //Y
-        new Vector3[4] { new Vector3(-0.5f,2), new Vector3(0.5f, 2), new Vector3(-0.5f,-3), new Vector3(0.5f,-3)  }, //M
-        new Vector3[4] { new Vector3(1f,0), new Vector3(2f, 0), new Vector3(-0.5f,-3), new Vector3(0.5f,-3)  }, //C
-        new Vector3[4] { new Vector3(-0.5f,3), new Vector3(0.5f, 3), new Vector3(-0.5f,-3), new Vector3(0.5f,-3)  }, //A
-
+        //                       LH,                    RH,                     LF,                     RF
+        new Vector3[4] { new Vector3(1f,2), new Vector3(-0.8f,1), new Vector3(-1.5f,-2f), new Vector3(1.5f,-2f), }, //cross hands
+        new Vector3[4] { new Vector3(-2f, 2.8f), new Vector3(2f,2.8f),    new Vector3(-1.5f,-2),  new Vector3(1.5f,-2)  }, //spread
+        new Vector3[4] { new Vector3(-2f,1),    new Vector3(2f, 1),     new Vector3(0f,-2.3f),     new Vector3(1.5f,-1)  }, //RF up
+        new Vector3[4] { new Vector3(-2f, 2.8f), new Vector3(2f, 2.8f), new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //Y
+        new Vector3[4] { new Vector3(-0.2f,2),  new Vector3(0.2f, 2),   new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //face cover
+        new Vector3[4] { new Vector3(1f,0),     new Vector3(2f, 0),     new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //C
+        new Vector3[4] { new Vector3(-2f,0),     new Vector3(-1f, 0),     new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //reverse C
+        new Vector3[4] { new Vector3(1f,2),     new Vector3(2f, 2),     new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //C up
+        new Vector3[4] { new Vector3(-2f,2),     new Vector3(-1f, 2),     new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //reverse C up
+        new Vector3[4] { new Vector3(-0.2f,3),  new Vector3(0.2f, 3),   new Vector3(-0.5f,-2.3f),  new Vector3(0.5f,-2.3f)  }, //A
     };
 
     void Start()
