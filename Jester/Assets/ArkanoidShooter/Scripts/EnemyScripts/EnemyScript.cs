@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     public float spawnXPosition = 11f;
     public float respawnTime = 5.0f;
 
-    public GameObject score;
+    //public GameObject score;
     public int scoreInt;
     private Transform player;
     private Animator animator;
@@ -32,10 +32,10 @@ public class EnemyScript : MonoBehaviour
         Vector3 targetPosition = new Vector2(player.position.x, player.position.y);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
-    private void FixedUpdate()
-    {
-        score.GetComponent<TextMeshProUGUI>().text = $"Score: {scoreInt}";
-    }
+    //private void FixedUpdate()
+    //{
+    //    score.GetComponent<TextMeshProUGUI>().text = $"Score: {scoreInt}";
+    //}
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
