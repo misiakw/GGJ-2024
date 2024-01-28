@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/KinectGame/KinectGame.unity
     guid: b3245cf2bce091247bf2608eef39a74e
+  - enabled: 1
+    path: Assets/ArkanoidShooter/ArkanoidShooter.unity
+    guid: 6bfd15c031cfc9b40aeb7717bfa841ce
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
