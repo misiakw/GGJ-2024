@@ -16,7 +16,7 @@ public class EnemyScript : MonoBehaviour
     public float respawnTime = 5.0f;
 
     //public GameObject score;
-    public int scoreInt;
+    public static int scoreInt;
     private Transform player;
     private Animator animator;
     public GameObject enemyPrefab;
@@ -32,30 +32,18 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 targetPosition = new Vector2(player.position.x, player.position.y);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        UpdateScore();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        scoreInt++;
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
-            
             PlayDestructionAnimation();
         }
         if(CompareTag("Player"))
         {
-            scoreInt++;
             Destroy(gameObject);
-        }
-    }
-
-    private void UpdateScore()
-    {
-        if(score != null)
-        {
-            score.GetComponent<TextMeshProUGUI>().text = $"Score : {scoreInt}";
         }
     }
 

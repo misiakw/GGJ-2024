@@ -33,7 +33,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        UpdateScore();
         // Move towards target position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
         current_Attack_Timer += Time.deltaTime;
@@ -51,13 +50,13 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-    private void UpdateScore()
-    {
-        if (score != null)
-        {
-            score.GetComponent<TextMeshProUGUI>().text = $"Score : {scoreInt}";
-        }
-    }
+    //private void UpdateScore()
+    //{
+    //    if (score != null)
+    //    {
+    //        score.GetComponent<TextMeshProUGUI>().text = $"Score : {scoreInt}";
+    //    }
+    //}
     void SearchForPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -66,6 +65,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
+            Destroy(collision.gameObject);
             Vector3 spawnPosition = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             Vector3 spawnPosition2 = new Vector3(spawnXPosition, Random.Range(yMin, yMax), transform.position.z);
             scoreInt += 10;
