@@ -5,6 +5,7 @@ public class LogicManagerScript : MonoBehaviour
 {
     public Text textUI;
     public GameObject gameOver;
+    public GameObject gameFailed;
     public Text clock;
     private float timer = 45;
     public GameObject vixaHero;
@@ -19,9 +20,14 @@ public class LogicManagerScript : MonoBehaviour
     {
         timer -= Time.deltaTime;
         clock.text = timer.ToString();
+
+        if (timer <= 0)
+        {
+            GameFinished();
+        }
     }
 
-    public void GameOver()
+    public void GameFailed()
     {
         //jester.SetActive(false);
         //priest.SetActive(false);
@@ -30,17 +36,26 @@ public class LogicManagerScript : MonoBehaviour
         DeactivateSpells();
         vixaHero.SetActive(false);
 
+        gameFailed.SetActive(true);
+    }
+
+    public void GameFinished()
+    {
+        DeactivateSpells();
+        vixaHero.SetActive(false);
+
         gameOver.SetActive(true);
     }
 
     public void UpdateScore(int score)
     {
-        Debug.Log($"LogicManagerScript counter: {score}");
+        //Debug.Log($"LogicManagerScript counter: {score}");
         textUI.text = score.ToString();
 
-        if (score ==  0)
+        if (score <=  0)
         {
-            GameOver();
+
+            GameFailed();
         }
     }
 

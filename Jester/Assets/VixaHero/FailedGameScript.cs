@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
-public class EndGameScript : MonoBehaviour
+public class FailedGameScript : MonoBehaviour
 {
     private EndScreenPtoceed input;
 
@@ -22,5 +21,17 @@ public class EndGameScript : MonoBehaviour
     public void OnDisable()
     {
         input.Disable();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        
     }
 }
