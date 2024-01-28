@@ -91,6 +91,7 @@ public class GameOrchestrator : MonoBehaviour
         if(score >= targetScore/2)
         {
             EndScreen.GetComponentInChildren<Text>().text = successText;
+            CrossSceneStorage.IsKinectComplete = true;
         }
         else
         {
