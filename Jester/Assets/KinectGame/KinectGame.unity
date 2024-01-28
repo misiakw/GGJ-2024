@@ -282,26 +282,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &555576442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5724008539490080661, guid: ebed44c7ad7533244b6b2e0ff2bfaad1, type: 3}
-  m_PrefabInstance: {fileID: 6690977336956209098}
-  m_PrefabAsset: {fileID: 0}
---- !u!166 &555576445
-AudioChorusFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555576442}
-  m_Enabled: 1
-  m_DryMix: 0.5
-  m_WetMix1: 0.5
-  m_WetMix2: 0.5
-  m_WetMix3: 0.5
-  m_Delay: 40
-  m_Rate: 0.8
-  m_Depth: 0.03
 --- !u!4 &619952228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400038, guid: 77a32863e7db71143ace465657f12120, type: 3}
@@ -1795,10 +1775,7 @@ PrefabInstance:
     - {fileID: 1885358454906923378, guid: ebed44c7ad7533244b6b2e0ff2bfaad1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5724008539490080661, guid: ebed44c7ad7533244b6b2e0ff2bfaad1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 555576445}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebed44c7ad7533244b6b2e0ff2bfaad1, type: 3}
 --- !u!1001 &6705854588194008000
 PrefabInstance:
