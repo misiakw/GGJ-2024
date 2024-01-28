@@ -234,7 +234,10 @@ MonoBehaviour:
   max_Y: 2
   player_Bullet: {fileID: 7141862203929415207, guid: eb8f2d1ab1101c043a0a83c080fc5108, type: 3}
   attack_Point: {fileID: 5740185265332518651}
-  attack_Timer: 0.35
-  attack_Delay: 0.4
-  max_Bullets: 5
+  attack_Timer: 0.05
+  attack_Delay: 0.05
+  max_Bullets: 6
+  bullet_Delay_timer: 0
   bulletsText: {fileID: 0}
+  healthText: {fileID: 0}
+  healthManager: {fileID: 0}

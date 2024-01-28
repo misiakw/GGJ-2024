@@ -11,6 +11,8 @@ TagManager:
   - SpellTag
   - LogicManagerScriptTag
   - GameOverrTag
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
