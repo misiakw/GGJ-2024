@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: 117}
+  m_AnchoredPosition: {x: -15, y: 75}
   m_SizeDelta: {x: 712.1413, y: 157.4172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4482374236329154478
@@ -212,18 +212,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Vehicula ipsum a arcu cursus
-    vitae congue mauris rhoncus. Senectus et netus et malesuada fames. Nam libero
-    justo laoreet sit amet cursus. Fusce id velit ut tortor pretium. Leo vel fringilla
-    est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Nisl nisi scelerisque
-    eu ultrices. Mollis nunc sed id semper risus. Dictum fusce ut placerat orci nulla
-    pellentesque dignissim. Etiam non quam lacus suspendisse faucibus interdum posuere
-    lorem. Sodales neque sodales ut etiam sit. Facilisi etiam dignissim diam quis
-    enim lobortis scelerisque. Feugiat scelerisque varius morbi enim nunc faucibus
-    a pellentesque sit. Sit amet venenatis urna cursus eget nunc scelerisque. Id
-    velit ut tortor pretium. Felis eget nunc lobortis mattis aliquam faucibus. Ipsum
-    suspendisse ultrices gravida dictum fusce ut.
+  m_Text: 'The Farmer Girl:
+
+    "Oh, thank you, Jester! My crops are flourishing
+    again, and the sun seems to shine brighter. You''ve brought life back to my fields
+    and joy to my heart!"
+
+
+    Jester to The Farmer:
+
+    I hope you''ll grow onions
+    instead of carrots now! Because, you know... layers? :o'
 --- !u!1 &1910553095461132832
 GameObject:
   m_ObjectHideFlags: 0

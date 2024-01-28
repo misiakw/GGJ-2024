@@ -82,6 +82,7 @@ public class NineStepsPlayerScript : MonoBehaviour
             GameView.SetActive(false);
             EndScreen.SetActive(true);
             input.Disable();
+            CrossSceneStorage.IsNineStepsComplete = true;
         }
         else
             GameTimer -= Time.deltaTime;

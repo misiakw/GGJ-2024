@@ -13,7 +13,6 @@ public class EndGameScript : MonoBehaviour
     }
     public void OnEnable()
     {
-        CrossSceneStorage.IsNineStepsComplete = true;
         input.Enable();
         input.Confirm.Confirm.performed += (c) => SceneManager.LoadScene("MainMap");
     }
