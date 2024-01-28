@@ -442,7 +442,7 @@ public class ClownController : MonoBehaviour
                 continue;
             }
             var boneToEdit = bones[(int)jt];
-            boneToEdit.position = (GetVector3FromJoint(sourceJoint) - GetVector3FromJoint(body.Joints[JointType.SpineBase])) * 3f;
+            boneToEdit.position = (GetVector3FromJoint(sourceJoint) - GetVector3FromJoint(body.Joints[JointType.SpineBase])) * 3f - new Vector3(0, 2);
             
         }
     }
