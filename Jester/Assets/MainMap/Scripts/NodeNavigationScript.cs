@@ -33,7 +33,10 @@ public class NodeNavigationScript : MonoBehaviour
     {
         if (dst == null)
             return;
-        Nodes.Add(directory, dst);
+        if (!Nodes.ContainsKey(directory))
+        {
+            Nodes.Add(directory, dst);
+        }
 
         var dstNav = dst.GetComponent<NodeNavigationScript>();
         var dstDir = directory switch
@@ -50,7 +53,8 @@ public class NodeNavigationScript : MonoBehaviour
 
             var line = new GameObject().AddComponent<LineRenderer>();
             line.material = new Material(Shader.Find("Sprites/Default"));
-            line.SetColors(this.Color, this.Color);
+            line.startColor = Color;
+            line.endColor = Color;
             line.startWidth = LineWidth;
             line.endWidth = LineWidth;
             line.positionCount = 2;
