@@ -1580,16 +1580,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.400051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.998516
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7160655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1619,10 +1631,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2042904279040993094, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_Name
       value: Jester2D
       objectReference: {fileID: 0}
+    - target: {fileID: 3746277495488002842, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: BodySourceManager
+      value: 
+      objectReference: {fileID: 1374468326}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

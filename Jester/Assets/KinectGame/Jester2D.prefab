@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1452917266153214432}
+  - component: {fileID: 3746277495488002842}
   m_Layer: 0
   m_Name: Jester2D
   m_TagString: Untagged
@@ -155,6 +156,23 @@ Transform:
   - {fileID: 350174520566683928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3746277495488002842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042904279040993094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58537f75ca8fb3c4dbfdc5ae4faa1073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftHand: {fileID: 6113325026573861840}
+  RightHand: {fileID: 383665352564401313}
+  LeftLeg: {fileID: 5858680890846538309}
+  RightLeg: {fileID: 9007283892655655026}
+  BodySourceManager: {fileID: 0}
 --- !u!1 &2816961186422138944
 GameObject:
   m_ObjectHideFlags: 0

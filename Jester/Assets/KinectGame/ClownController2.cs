@@ -243,6 +243,7 @@ public class ClownController2 : MonoBehaviour
             bones[(int)jt] = animatorComponent.GetBoneTransform(jointToHumanBody[jt]);
         }
     }
+
     protected void MoveAvatar(uint UserID)
     {
         //if (bodyRoot == null || kinectManager == null)
@@ -251,7 +252,7 @@ public class ClownController2 : MonoBehaviour
         //    return;
 
         // Get the position of the body and store it.
-        Vector3 trans = Vector3.zero;// kinectManager.GetUserPosition(UserID);
+        Vector3 trans =  kinectManager.GetUserPosition(UserID);
 
         // If this is the first time we're moving the avatar, set the offset. Otherwise ignore it.
         if (!offsetCalibrated)
