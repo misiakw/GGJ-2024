@@ -8,7 +8,9 @@ using static Assets.KinectGame.Enums;
 public class ClownController3 : MonoBehaviour
 {
     public GameObject LeftHand;
+    public GameObject LeftArm;
     public GameObject RightHand;
+    public GameObject RightArm;
     public GameObject LeftLeg;
     public GameObject RightLeg;
 
@@ -25,6 +27,8 @@ public class ClownController3 : MonoBehaviour
 
     protected Transform[] bones;
 
+    private float translationScale = 3f;
+
     protected virtual void MapBones()
     {
         // make OffsetNode as a parent of model transform.
@@ -40,7 +44,7 @@ public class ClownController3 : MonoBehaviour
         // take model transform as body root
         bodyRoot = transform;
 
-        for(int i = 0; i!= supportedTypes.Count; i++)
+        for (int i = 0; i != supportedTypes.Count; i++)
         {
             var supportedType = supportedTypes[i];
             switch (supportedType)
@@ -56,6 +60,9 @@ public class ClownController3 : MonoBehaviour
                     break;
                 case JointType.AnkleRight:
                     bones[i] = RightLeg.transform;
+                    break;
+                case JointType.ElbowLeft:
+                    bones[i] = LeftArm.transform;
                     break;
             }
 
@@ -85,7 +92,7 @@ public class ClownController3 : MonoBehaviour
             return;
 
         // inits the bones array
-        bones = new Transform[4];
+        bones = new Transform[10];
 
         // Initial rotations and directions of the bones.
         initialRotations = new Quaternion[bones.Length];
@@ -164,7 +171,7 @@ public class ClownController3 : MonoBehaviour
         return;
     }
 
-    private static List<JointType> supportedTypes = new List<JointType>() { JointType.HandLeft, JointType.HandRight, JointType.AnkleLeft, JointType.AnkleRight };
+    private static List<JointType> supportedTypes = new List<JointType>() { JointType.HandLeft, JointType.HandRight, JointType.AnkleLeft, JointType.AnkleRight, JointType.ElbowLeft, JointType.ElbowRight };
 
     private void MoveAvatar(Body body)
     {
@@ -176,16 +183,35 @@ public class ClownController3 : MonoBehaviour
             switch (supportedType)
             {
                 case JointType.HandLeft:
-                    originJoint = body.Joints[JointType.ShoulderLeft];
-                    double a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Y, originJoint.Position.Y);
-                    double b = a;
-                    double c = CalculateLength(originJoint.Position.X - a, sourceJoint.Position.X, originJoint.Position.Y, sourceJoint.Position.Y);
-                    double newZRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
-                    if(sourceJoint.Position.Y > originJoint.Position.Y)
+                    originJoint = body.Joints[JointType.ElbowLeft];
+                    float a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Y, originJoint.Position.Y);
+                    float b = a;
+                    float c = CalculateLength(originJoint.Position.X - a, sourceJoint.Position.X, originJoint.Position.Y, sourceJoint.Position.Y);
+                    float newZRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
+                    if (sourceJoint.Position.Y > originJoint.Position.Y)
                     {
                         newZRotation *= -1;
                     }
-                    LeftHand.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, (float)newZRotation);
+                    LeftHand.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, newZRotation - LeftArm.transform.localEulerAngles.z);
+                    LeftHand.transform.localScale = new Vector3(a * translationScale / LeftArm.transform.localScale.x, 1, 1);
+                    //LeftHand.transform.position = GetVector3FromJoint(sourceJoint) * 3f - new Vector3(0, 2);
+                    break;
+                case JointType.ElbowLeft:
+                    originJoint = body.Joints[JointType.ShoulderLeft];
+                    a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Y, originJoint.Position.Y);
+                    b = a;
+                    c = CalculateLength(originJoint.Position.X - a, sourceJoint.Position.X, originJoint.Position.Y, sourceJoint.Position.Y);
+                    newZRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
+                    if (sourceJoint.Position.Y > originJoint.Position.Y)
+                    {
+                        newZRotation *= -1;
+                    }
+                    //a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Z, originJoint.Position.Z);
+                    //b = a;
+                    //c = CalculateLength(originJoint.Position.X - a, sourceJoint.Position.X, originJoint.Position.Z, sourceJoint.Position.Z);
+                    //float newYRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
+                    LeftArm.transform.localEulerAngles = new Vector3(LeftArm.transform.localEulerAngles.x, LeftArm.transform.localEulerAngles.y, (float)newZRotation);
+                    LeftArm.transform.localScale = new Vector3(a * translationScale, 1, 1);
                     break;
                 case JointType.HandRight:
                     originJoint = body.Joints[JointType.ShoulderRight];
@@ -197,7 +223,25 @@ public class ClownController3 : MonoBehaviour
                     {
                         newZRotation *= -1;
                     }
-                    RightHand.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, (float)newZRotation);
+                    RightHand.transform.localEulerAngles = new Vector3(RightHand.transform.localEulerAngles.x, RightHand.transform.localEulerAngles.y, newZRotation - RightArm.transform.localEulerAngles.z);
+                    RightHand.transform.localScale = new Vector3(a * translationScale / RightArm.transform.localScale.x, 1, 1);
+                    break;
+                case JointType.ElbowRight:
+                    originJoint = body.Joints[JointType.ShoulderRight];
+                    a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Y, originJoint.Position.Y);
+                    b = a;
+                    c = CalculateLength(originJoint.Position.X + a, sourceJoint.Position.X, originJoint.Position.Y, sourceJoint.Position.Y);
+                    newZRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
+                    if (sourceJoint.Position.Y < originJoint.Position.Y)
+                    {
+                        newZRotation *= -1;
+                    }
+                    //a = CalculateLength(sourceJoint.Position.X, originJoint.Position.X, sourceJoint.Position.Z, originJoint.Position.Z);
+                    //b = a;
+                    //c = CalculateLength(originJoint.Position.X - a, sourceJoint.Position.X, originJoint.Position.Z, sourceJoint.Position.Z);
+                    //float newYRotation = Mathf.Rad2Deg * CalculateAngle(a, b, c);
+                    RightArm.transform.localEulerAngles = new Vector3(RightArm.transform.localEulerAngles.x, RightArm.transform.localEulerAngles.y, (float)newZRotation);
+                    RightArm.transform.localScale = new Vector3(a * translationScale, 1, 1);
                     break;
                 case JointType.AnkleLeft:
                     originJoint = body.Joints[JointType.HipLeft];
@@ -209,7 +253,7 @@ public class ClownController3 : MonoBehaviour
                     {
                         newZRotation *= -1;
                     }
-                    LeftLeg.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, (float)newZRotation);
+                    LeftLeg.transform.localEulerAngles = new Vector3(LeftLeg.transform.localEulerAngles.x, LeftLeg.transform.localEulerAngles.y, (float)newZRotation);
                     break;
                 case JointType.AnkleRight:
                     originJoint = body.Joints[JointType.HipRight];
@@ -221,27 +265,27 @@ public class ClownController3 : MonoBehaviour
                     {
                         newZRotation *= -1;
                     }
-                    RightLeg.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, (float)newZRotation);
+                    RightLeg.transform.localEulerAngles = new Vector3(RightLeg.transform.localEulerAngles.x, RightLeg.transform.localEulerAngles.y, (float)newZRotation);
                     break;
             }
 
-            
 
-            
+
+
             //var boneToEdit = bones[(int)supportedType];
             //boneToEdit.position = (GetVector3FromJoint(sourceJoint) - GetVector3FromJoint(body.Joints[JointType.SpineBase])) * 3f - new Vector3(0, 2);
         }
     }
 
-    static double CalculateAngle(double a, double b, double c)
+    static float CalculateAngle(float a, float b, float c)
     {
         var result = (a * a + b * b - c * c) / (2 * a * b);
-        return Math.Acos(result);
+        return Mathf.Acos(result);
     }
 
-    static double CalculateLength(double x1, double x2, double y1, double y2)
+    static float CalculateLength(float x1, float x2, float y1, float y2)
     {
-        return Math.Sqrt(Math.Abs(x1 - x2)* Math.Abs(x1 - x2) + Math.Abs(y1 - y2)* Math.Abs(y1 - y2));
+        return Mathf.Sqrt(Math.Abs(x1 - x2) * Math.Abs(x1 - x2) + Math.Abs(y1 - y2) * Math.Abs(y1 - y2));
     }
 
     private static Vector3 GetVector3FromJoint(Windows.Kinect.Joint joint)

@@ -332,6 +332,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400046, guid: 77a32863e7db71143ace465657f12120, type: 3}
   m_PrefabInstance: {fileID: 2009033244}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1047537062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 383665352564401313, guid: dc866489788e5f744be5808063754351, type: 3}
+  m_PrefabInstance: {fileID: 6705854588194008000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1091112724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400040, guid: 77a32863e7db71143ace465657f12120, type: 3}
@@ -373,6 +378,10 @@ PrefabInstance:
     - target: {fileID: 1650609823357509839, guid: 1c819b46fec6fe04bbb5635a4717d49f, type: 3}
       propertyPath: m_Name
       value: Kween
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650609823357509839, guid: 1c819b46fec6fe04bbb5635a4717d49f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4171600173858534943, guid: 1c819b46fec6fe04bbb5635a4717d49f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -680,6 +689,11 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1505494821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4033285057184638039, guid: dc866489788e5f744be5808063754351, type: 3}
+  m_PrefabInstance: {fileID: 6705854588194008000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1513623572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 77a32863e7db71143ace465657f12120, type: 3}
@@ -1580,18 +1594,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1631,14 +1633,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1452917266153214432, guid: dc866489788e5f744be5808063754351, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2042904279040993094, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: m_Name
       value: Jester2D
       objectReference: {fileID: 0}
+    - target: {fileID: 3746277495488002842, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: RightArm
+      value: 
+      objectReference: {fileID: 1047537062}
+    - target: {fileID: 3746277495488002842, guid: dc866489788e5f744be5808063754351, type: 3}
+      propertyPath: RightHand
+      value: 
+      objectReference: {fileID: 1505494821}
     - target: {fileID: 3746277495488002842, guid: dc866489788e5f744be5808063754351, type: 3}
       propertyPath: BodySourceManager
       value: 
