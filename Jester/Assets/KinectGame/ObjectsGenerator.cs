@@ -13,19 +13,27 @@ public class ObjectsGenerator : MonoBehaviour
     private bool redrawObjects = true;
     public int score = 0;
     public bool isRunning = false;
+    private int previousPreset = 0;
     private List<Vector3[]> TargetPositions = new List<Vector3[]>()
     {
         //                       LH,                        RH,                             LF,                             RF
         new Vector3[4] { new Vector3(1f,2),         new Vector3(-0.8f,1),       new Vector3(-1.5f,-2f),         new Vector3(1.5f,-2f), }, //cross hands
         new Vector3[4] { new Vector3(-2f, 2.8f),    new Vector3(2f,2.8f),       new Vector3(-1.5f,-2),          new Vector3(1.5f,-2)  }, //spread
         new Vector3[4] { new Vector3(-2f,1),        new Vector3(2f, 1),         new Vector3(0f,-2.3f),          new Vector3(1.5f,-1)  }, //RF up
+        new Vector3[4] { new Vector3(-2f,1),        new Vector3(2f, 1),         new Vector3(-1.5f, -1f),          new Vector3(0f,-2.3f)  }, //LF up
         new Vector3[4] { new Vector3(-2f, 2.8f),     new Vector3(2f, 2.8f),     new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //Y
-        new Vector3[4] { new Vector3(-0.2f,2),      new Vector3(0.2f, 2),       new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //face cover
+        new Vector3[4] { new Vector3(-0.2f,2),      new Vector3(0.2f, 2),       new Vector3(-0.5f,-2.3f),       new Vector3(1.5f,-2.3f)  }, //face cover
         new Vector3[4] { new Vector3(1f,0),         new Vector3(2f, 0),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C
-        new Vector3[4] { new Vector3(-2f,0),        new Vector3(-1f, 0),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C
+        new Vector3[4] { new Vector3(-2f,0),        new Vector3(-1f, 0),        new Vector3(-0.5f,-2.3f),       new Vector3(1.5f,-2.3f)  }, //reverse C
         new Vector3[4] { new Vector3(1f,2),         new Vector3(2f, 2),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C up
         new Vector3[4] { new Vector3(-2f,2),        new Vector3(-1f, 2),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C up
-        new Vector3[4] { new Vector3(-0.2f,3),      new Vector3(0.2f, 3),       new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //A
+        new Vector3[4] { new Vector3(-2f, 2.8f),     new Vector3(2f, 2.8f),     new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //Y
+        new Vector3[4] { new Vector3(-0.2f,2),      new Vector3(0.2f, 2),       new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //face cover
+        new Vector3[4] { new Vector3(1f,0),         new Vector3(2f, 0),         new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //C
+        new Vector3[4] { new Vector3(-2f,0),        new Vector3(-1f, 0),        new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //reverse C
+        new Vector3[4] { new Vector3(1f,2),         new Vector3(2f, 2),         new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //C up
+        new Vector3[4] { new Vector3(-2f,2),        new Vector3(-1f, 2),        new Vector3(-1.5f,-2f),       new Vector3(1.5f,-2f)  }, //reverse C up
+        new Vector3[4] { new Vector3(-0.2f,3),      new Vector3(0.2f, 3),       new Vector3(-1.5f, -2f),       new Vector3(1.5f,-2f)  }, //A
     };
 
     void Start()
@@ -55,6 +63,10 @@ public class ObjectsGenerator : MonoBehaviour
         if (usePresets)
         {
             int selectedPreset = UnityEngine.Random.Range(0, TargetPositions.Count);
+            while(selectedPreset == previousPreset)
+            {
+                selectedPreset = UnityEngine.Random.Range(0, TargetPositions.Count);
+            }
             for (int i = 0; i != Targets.Length; i++)
             {
                 if (Targets[i] == null || Targets[i].GetComponent<TargetController>().shouldDestroy)
@@ -73,6 +85,7 @@ public class ObjectsGenerator : MonoBehaviour
                     tc.shouldRandomize = false;
                 }
             }
+            previousPreset = selectedPreset;
         }
         else
         {
