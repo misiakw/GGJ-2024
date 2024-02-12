@@ -275,9 +275,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1011
-        y: 44
+        y: 218
         width: 205
-        height: 431
+        height: 257
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +295,10 @@ TextureImporter:
       name: Jester_29
       rect:
         serializedVersion: 2
-        x: 1281
-        y: 34
-        width: 203
-        height: 445
+        x: 1280
+        y: 217
+        width: 204
+        height: 262
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,7 +342,7 @@ TextureImporter:
         width: 127
         height: 221
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -350,6 +350,48 @@ TextureImporter:
       bones: []
       spriteID: c2e69695ea5b3e446a5aec355d096ff5
       internalID: -419915514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jester_3
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 46
+        width: 202
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1336c72c6735b4c499b3285f0801db9e
+      internalID: 410576286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jester_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 33
+        width: 203
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c476cffa614cba49b7f3488eb481b48
+      internalID: 378115292
       vertices: []
       indices: 
       edges: []
@@ -367,6 +409,8 @@ TextureImporter:
     nameFileIdTable:
       Jester_1: -418078827
       Jester_2: -419915514
+      Jester_3: 858962987
+      Jester_4: 410576286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
