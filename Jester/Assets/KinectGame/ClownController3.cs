@@ -195,7 +195,7 @@ public class ClownController3 : MonoBehaviour
                         newZRotation *= -1;
                     }
                     LeftHand.transform.localEulerAngles = new Vector3(LeftHand.transform.localEulerAngles.x, LeftHand.transform.localEulerAngles.y, newZRotation - LeftArm.transform.localEulerAngles.z);
-                    LeftHand.transform.localScale = new Vector3(a * translationScale / LeftArm.transform.localScale.x, 1, 1);
+                    LeftHand.transform.localScale = new Vector3(a * translationScale /*/ LeftArm.transform.localScale.x*/, 1, 1);
                     //LeftHand.transform.position = GetVector3FromJoint(sourceJoint) * 3f - new Vector3(0, 2);
                     break;
                 case JointType.ElbowLeft:
@@ -226,7 +226,7 @@ public class ClownController3 : MonoBehaviour
                         newZRotation *= -1;
                     }
                     RightHand.transform.localEulerAngles = new Vector3(RightHand.transform.localEulerAngles.x, RightHand.transform.localEulerAngles.y, newZRotation - RightArm.transform.localEulerAngles.z);
-                    RightHand.transform.localScale = new Vector3(a * translationScale / RightArm.transform.localScale.x, 1, 1);
+                    RightHand.transform.localScale = new Vector3(a * translationScale /*/ RightArm.transform.localScale.x*/, 1, 1);
                     break;
                 case JointType.ElbowRight:
                     originJoint = body.Joints[JointType.ShoulderRight];
