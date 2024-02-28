@@ -180,6 +180,6 @@ public class BodySourceView : MonoBehaviour
     
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float transformScale)
     {
-        return new Vector3(joint.Position.X * transformScale, joint.Position.Y * transformScale, 0);
+        return new Vector3(joint.Position.X * transformScale, joint.Position.Y * transformScale, 0) - new Vector3(0.5f, 2f, 0);
     }
 }

@@ -190,8 +190,8 @@ TextureImporter:
       name: Jester_0
       rect:
         serializedVersion: 2
-        x: 111
-        y: 52
+        x: 141
+        y: 7
         width: 834
         height: 955
       alignment: 0
@@ -211,8 +211,8 @@ TextureImporter:
       name: Jester_8
       rect:
         serializedVersion: 2
-        x: 1512
-        y: 260
+        x: 1538
+        y: 222
         width: 480
         height: 677
       alignment: 0
@@ -232,8 +232,8 @@ TextureImporter:
       name: Jester_16
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 697
+        x: 1324
+        y: 648
         width: 128
         height: 217
       alignment: 0
@@ -253,8 +253,8 @@ TextureImporter:
       name: Jester_20
       rect:
         serializedVersion: 2
-        x: 1041
-        y: 703
+        x: 1070
+        y: 658
         width: 132
         height: 202
       alignment: 0
@@ -274,8 +274,8 @@ TextureImporter:
       name: Jester_28
       rect:
         serializedVersion: 2
-        x: 1011
-        y: 218
+        x: 1035
+        y: 175
         width: 205
         height: 257
       alignment: 0
@@ -295,8 +295,8 @@ TextureImporter:
       name: Jester_29
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 217
+        x: 1313
+        y: 177
         width: 204
         height: 262
       alignment: 0
@@ -316,8 +316,8 @@ TextureImporter:
       name: Jester_1
       rect:
         serializedVersion: 2
-        x: 1041
-        y: 520
+        x: 1070
+        y: 482
         width: 134
         height: 218
       alignment: 0
@@ -337,8 +337,8 @@ TextureImporter:
       name: Jester_2
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 510
+        x: 1323
+        y: 482
         width: 127
         height: 221
       alignment: 0
@@ -358,8 +358,8 @@ TextureImporter:
       name: Jester_3
       rect:
         serializedVersion: 2
-        x: 1013
-        y: 46
+        x: 1037
+        y: 1
         width: 202
         height: 211
       alignment: 0
@@ -379,8 +379,8 @@ TextureImporter:
       name: Jester_4
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 33
+        x: 1313
+        y: 0
         width: 203
         height: 222
       alignment: 0
