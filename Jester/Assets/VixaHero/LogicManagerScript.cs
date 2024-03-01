@@ -7,7 +7,7 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject gameOver;
     public GameObject gameFailed;
     public Text clock;
-    private float timer = 20;
+    private float timer = 60;
     public GameObject vixaHero;
     private bool _gameFailedFlag = false;
 

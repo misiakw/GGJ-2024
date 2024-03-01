@@ -18,15 +18,16 @@ public class ObjectsGenerator : MonoBehaviour
     private List<Vector3[]> TargetPositions = new List<Vector3[]>()
     {
         //                       LH,                        RH,                             LF,                             RF
-        new Vector3[4] { new Vector3(1f,2),         new Vector3(-0.8f,1),       new Vector3(-1.5f,-2f),         new Vector3(1.5f,-2f), }, //cross hands
+        new Vector3[4] { new Vector3(1f,2.5f),         new Vector3(-0.8f,2f),       new Vector3(-1.5f,-2f),         new Vector3(1.5f,-2f), }, //cross hands
         new Vector3[4] { new Vector3(-2f, 2.8f),    new Vector3(2f,2.8f),       new Vector3(-1.5f,-2),          new Vector3(1.5f,-2)  }, //spread
-        new Vector3[4] { new Vector3(-2f,1),        new Vector3(2f, 1),         new Vector3(0f,-2.3f),          new Vector3(1.5f,-1)  }, //RF up
+        new Vector3[4] { new Vector3(-2f,2f),        new Vector3(2f, 2f),         new Vector3(0f,-2.3f),          new Vector3(1.5f,-1)  }, //RF up
+        new Vector3[4] { new Vector3(-2f,2f),        new Vector3(2f, 2f),         new Vector3(-1.5f,-1f),          new Vector3(0f,-2.3f)  }, //LF up
         new Vector3[4] { new Vector3(-2f, 2.8f),     new Vector3(2f, 2.8f),     new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //Y
-        new Vector3[4] { new Vector3(-0.2f,2),      new Vector3(0.2f, 2),       new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //face cover
-        new Vector3[4] { new Vector3(1f,0),         new Vector3(2f, 0),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C
-        new Vector3[4] { new Vector3(-2f,0),        new Vector3(-1f, 0),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C
-        new Vector3[4] { new Vector3(1f,2),         new Vector3(2f, 2),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C up
-        new Vector3[4] { new Vector3(-2f,2),        new Vector3(-1f, 2),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C up
+        new Vector3[4] { new Vector3(-0.2f,2.5f),      new Vector3(0.2f, 2.5f),       new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //face cover
+        new Vector3[4] { new Vector3(1f,2f),         new Vector3(2f, 2f),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C
+        new Vector3[4] { new Vector3(-2f,2f),        new Vector3(-1f, 2f),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C
+        new Vector3[4] { new Vector3(1f,2.5f),         new Vector3(2f, 2.5f),         new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //C up
+        new Vector3[4] { new Vector3(-2f,2.5f),        new Vector3(-1f, 2.5f),        new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //reverse C up
         new Vector3[4] { new Vector3(-0.2f,3),      new Vector3(0.2f, 3),       new Vector3(-0.5f,-2.3f),       new Vector3(0.5f,-2.3f)  }, //A
     };
 
@@ -48,7 +49,7 @@ public class ObjectsGenerator : MonoBehaviour
             redrawObjects = false;
             RestartTargets(true);
         }
-        TriggerTargets();
+        //TriggerTargets();
         redrawObjects = CheckIfAllTargetsDestroyed();
     }
 
@@ -74,7 +75,7 @@ public class ObjectsGenerator : MonoBehaviour
                     }
                     Targets[i].name = "Target" + lt;
                     TargetController tc = Targets[i].GetComponent<TargetController>();
-                    tc.transform.position = TargetPositions[selectedPreset][i] - new Vector3(0,2);
+                    tc.transform.position = TargetPositions[selectedPreset][i] - new Vector3(0,1.8f);
                     tc.TargetLimbType = lt;
                     tc.shouldRandomize = false;
                 }
