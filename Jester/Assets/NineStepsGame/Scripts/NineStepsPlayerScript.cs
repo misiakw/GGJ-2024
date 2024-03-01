@@ -18,7 +18,7 @@ public class NineStepsPlayerScript : MonoBehaviour
     public float MoveSpeed = 0.25f;
     public float minWaitTime = 0.5f;
     public float maxWaitTime = 1.5f;
-    public float GameTimer = 45f;
+    public float GameTimer = 60f;
     public Text TextLabel;
 
     private GameObject[,] Steps = new GameObject[3, 3];

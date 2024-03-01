@@ -15,9 +15,9 @@ public class ClownController3 : MonoBehaviour
     public GameObject LeftFoot;
     public GameObject RightLeg;
     public GameObject RightFoot;
+    public GameObject Body;
 
     public GameObject BodySourceManager;
-    private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
     protected Transform bodyRoot;
     // A required variable if you want to rotate the model in space.
@@ -30,6 +30,7 @@ public class ClownController3 : MonoBehaviour
     protected Transform[] bones;
 
     private float translationScale = 3f;
+    ulong currentTrackedId = 0;
 
     protected virtual void MapBones()
     {
@@ -144,16 +145,11 @@ public class ClownController3 : MonoBehaviour
             }
         }
 
-        List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
-
         // First delete untracked bodies
-        foreach (ulong trackingId in knownIds)
+        if (!trackedIds.Contains(currentTrackedId))
         {
-            if (!trackedIds.Contains(trackingId))
-            {
-                Destroy(_Bodies[trackingId]);
-                _Bodies.Remove(trackingId);
-            }
+            currentTrackedId = 0;
+            Body.SetActive(false);
         }
 
         foreach (var body in data)
@@ -165,6 +161,8 @@ public class ClownController3 : MonoBehaviour
 
             if (body.IsTracked)
             {
+                currentTrackedId = body.TrackingId;
+                Body.SetActive(true);
                 //MoveAvatar(1);
                 MoveAvatar(body);
             }

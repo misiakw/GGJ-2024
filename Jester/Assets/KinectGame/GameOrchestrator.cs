@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameOrchestrator : MonoBehaviour
 {
-    public float TimeLimit = 60.0f;
+    public float TimeLimit = 60f;
     public GameObject ScoreText;
     public GameObject TimeLeftText;
     public GameObject ObjectsGenerator;
@@ -18,7 +18,7 @@ public class GameOrchestrator : MonoBehaviour
     private float ElapsedTime = 0f;
     private bool isRunning = false;
     private int score = 0;
-    private float targetScore = 100f;
+    private float targetScore = 50f;
     private SpriteRenderer happyKweenSpriteRenderer;
     // Start is called before the first frame update
     void Start()
